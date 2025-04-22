@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>得点管理システム</title>
 <style>
+<%--
 	.container {
     display: flex; /* フレックスボックスを使用 */
     width: 100%;
@@ -66,6 +67,7 @@
 	border: none;
 	outline: none;
 	}
+--%>
 </style>
 </head>
 <body>
