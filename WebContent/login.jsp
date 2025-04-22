@@ -3,7 +3,7 @@
 
 <form action="main/Login.action" method="post">
 
-<h2>ログイン</h2>
+<h2>ログインa</h2>
 
 <input type="text" name="id" placeholder="半角でご入力ください" required>
 
