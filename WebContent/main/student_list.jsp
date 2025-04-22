@@ -3,10 +3,11 @@
 <%@include file="../header.jsp" %>
 <%@include file="../sidebar.jsp" %>
 
+<div style="width:100%;">
 
 <h2 style="background-color: #DCDCDC;">学生管理</h2>
 
-<a href="StudentCreate.action">新規登録</a>
+<a href="StudentCreate.action" style="text-align: right;">新規登録</a>
 
 <form action="" method="get">
 
@@ -56,6 +57,8 @@
 		<div>学生情報が存在しませんでした</div>
 	</c:otherwise>
 </c:choose>
+
+</div>
 
 
 <%@include file="../footer.jsp" %>
