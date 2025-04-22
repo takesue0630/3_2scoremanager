@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=UTF-8" %>
+	<%@page contentType="text/html; charset=UTF-8" %>
 <%@include file="header.jsp" %>
 
 <form action="main/Login.action" method="post">
