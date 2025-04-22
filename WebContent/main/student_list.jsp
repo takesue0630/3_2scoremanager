@@ -11,6 +11,8 @@
 
 <form action="" method="get">
 
+<div>
+
 <label>入学年度</label>
 <select></select>
 
@@ -20,6 +22,8 @@
 <input type="checkbox">在学中
 
 <input type="submit" value="絞込み">
+
+</div>
 
 </form>
 <c:choose >

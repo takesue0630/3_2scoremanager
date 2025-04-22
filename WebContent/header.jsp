@@ -13,57 +13,15 @@
 	}
 
 	.sidebar {
-    flex: 25; /* 3:1 の比率でカラムを広くする */
+    flex: 25; /* 全体の25%の大きさにする */
     padding: 20px;
 	border-right: solid 2px #DCDCDC;
 	}
 
 	.main {
-    flex: 75; /* サイドバーを小さくする */
+    flex: 75; /* 全体の75%の大きさにする */
     padding: 20px;
 	}
-
-<%--
-	header {
-	background-color: #87cefa;
-	padding: 10px;
-	display: flex; /* フレックスボックスを使用 */
-    width: 100%;
-    height: 100%;
-    margin: 0 auto; /* 中央に配置 */
-	}
-
-	.title{
-	width: 70%;
-	}
-
-	.sub-menu{
-	width: 30%;
-	float: right;
-	}
-
-	footer {
-	background-color: #DCDCDC;
-	}
-
-	footer p {
-	text-align: center;
-	}
-
-	ul {
-	list-style-type: none;
-	}
-
-	.insert p input,.insert p select{
-	width: 100%;
-	height: 30px;
-	}
-
-	.boader_none {
-	border: none;
-	outline: none;
-	}
---%>
 </style>
 </head>
 <body>
