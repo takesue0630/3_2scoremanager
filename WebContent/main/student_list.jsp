@@ -54,6 +54,7 @@
 		<th style="width:10%;">在学中</th>
 		</thead>
 
+
 		<c:forEach var="student" items="${list}">
 			<tr>
 				<td style="border-top:2px solid #DCDCDC;">${ student.entYear }</td>
