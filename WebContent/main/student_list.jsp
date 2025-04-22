@@ -5,13 +5,13 @@
 
 <div style="width:100%;">
 
-<h2 style="background-color: #DCDCDC;">学生 管理</h2>
+<h2 style="background-color: #DCDCDC;">学生管理</h2>
 
-<a href="StudentCreate.action" style="text-align: right;">新規登録</a>
+<p style="text-align: right;"><a href="StudentCreate.action">新規登録</a></p>
+
+<div style="border:2px solid #DCDCDC; border-radius:5px; margin:10px; padding:10px;">
 
 <form action="" method="get">
-
-<div>
 
 <label>入学年度</label>
 <select></select>
@@ -23,9 +23,10 @@
 
 <input type="submit" value="絞込み">
 
+</form>
+
 </div>
 
-</form>
 <c:choose >
 	<c:when test="${ size>0 }">
 		<div>検索結果${ size }件</div>
