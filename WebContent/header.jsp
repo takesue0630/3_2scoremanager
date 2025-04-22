@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <title>得点管理システム</title>
 <style>
-<%--
 	.container {
     display: flex; /* フレックスボックスを使用 */
     width: 100%;
@@ -24,6 +23,7 @@
     padding: 20px;
 	}
 
+<%--
 	header {
 	background-color: #87cefa;
 	padding: 10px;
@@ -40,10 +40,6 @@
 	.sub-menu{
 	width: 30%;
 	float: right;
-	}
-
-	h2 {
-	background-color: #DCDCDC;
 	}
 
 	footer {
