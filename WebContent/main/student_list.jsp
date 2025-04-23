@@ -14,6 +14,7 @@
 <div style="border:2px solid #DCDCDC; border-radius:5px; margin:10px; display:flex;">
 
 <div style="width:30%; padding:10px;">
+
 <label>入学年度</label>
 <br>
 <select name="f1" style="width:100%; height:30px;">
