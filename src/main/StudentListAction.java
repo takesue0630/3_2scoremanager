@@ -1,5 +1,8 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import bean.School;
 import bean.Student;
 import bean.Teacher;
+import dao.ClassNumDao;
 import dao.StudentDao;
 import tool.Action;
 
@@ -24,41 +28,29 @@ public class StudentListAction extends Action {
 //		セッションのユーザーデータから、ユーザーが所属している学校の生徒一覧用データを取得
 		School school=teacher.getSchool();
 		StudentDao dao=new StudentDao();
-
-
-//		String entYearString=request.getParameter("entYear");
-//
-//		if (entYearString!=null) {
-//			int entYear=Integer.parseInt(entYearString);
-//			if (request.getParameter("classNum")!=null) {
-//				String classNum=request.getParameter("classNum");
-//				list=dao.filter(school,entYear,classNum,true);
-//			} else {
-//				list=dao.filter(school,entYear,true);
-//			}
-//		} else {
-//			list=dao.filter(school,true);
-//		}
-
 		List<Student> list=dao.filter(school,true);
 
-//		boolean isAttend=Boolean.parseBoolean(request.getParameter("isAttend"));
-
+//		セッションに生徒のリストとリストサイズを格納
 		session.setAttribute("list", list);
-
 		session.setAttribute("size", list.size());
 
-////		カレンダーオブジェクトの生成
-//		Calendar c = Calendar.getInstance();
-////		現在年を格納
-//	    c.setTime(new Date());
-////	    十年前から十年後までのリストを作成
-//	    List<String> ent_year_set=new ArrayList<>();
-//	    for (int i = -10; i <= 10; i++) {
-//	    	year.add(""+(c.get(Calendar.YEAR)+i)+"");
-//	    }
-////	    リクエスト属性に格納
-//	    request.setAttribute("ent_year_set", ent_year_set);
+//		カレンダーオブジェクトの生成
+		Calendar c = Calendar.getInstance();
+//		現在年を格納
+	    c.setTime(new Date());
+//	    十年前から十年後までのリストを作成
+	    List<String> ent_year_set=new ArrayList<>();
+	    for (int i = -10; i <= 10; i++) {
+	    	ent_year_set.add(""+(c.get(Calendar.YEAR)+i)+"");
+	    }
+//	    リクエスト属性に格納
+	    request.setAttribute("ent_year_set", ent_year_set);
+
+//	    セレクトボックス用のクラスデータを取得
+		ClassNumDao cdao=new ClassNumDao();
+		List<String> class_num_set=cdao.filter(teacher.getSchool());
+//	    リクエスト属性に格納
+		request.setAttribute("class_num_set", class_num_set);
 
 		return "student_list.jsp";
 	}
