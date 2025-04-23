@@ -21,6 +21,7 @@ public class LoginAction extends Action {
 		TeacherDao dao=new TeacherDao();
 		Teacher teacher=dao.login(id, password);
 
+
 		if (teacher!=null) {
 
 			session.setAttribute("teacher", teacher);
