@@ -49,7 +49,6 @@ public class StudentListAction extends Action {
 		School school=teacher.getSchool();
 		StudentDao dao=new StudentDao();
 		List<Student> list;
-//		List<Student> list=dao.filter(school, true);
 
 		if (class_num.equals("0")) {
 			if (ent_year==0) {

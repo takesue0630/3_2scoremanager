@@ -10,6 +10,7 @@ import bean.School;
 import bean.Student;
 
 public class StudentDao extends DAO{
+
 	private String baseSql="select * from student join school where cd=?";
 
 	public Student get(String no) throws Exception{
