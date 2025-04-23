@@ -1,6 +1,5 @@
 package main;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,8 +39,7 @@ public class StudentCreateAction extends Action {
 	    }
 //	    リクエスト属性に格納
 	    request.setAttribute("year", year);
-	    PrintWriter out = response.getWriter();
-	    out.println("a");
+
 		return "student_create.jsp";
 	}
 }
