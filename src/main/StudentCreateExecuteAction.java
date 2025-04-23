@@ -19,15 +19,15 @@ public class StudentCreateExecuteAction extends Action {
 		Teacher teacher=(Teacher)session.getAttribute("teacher");
 
 //		入力値のチェック
-		if (request.getParameter("ent_year")==null) {
-			return "student_create.jsp";
-		}
+//		if (request.getParameter("ent_year")==null) {
+//			return "student_create.jsp";
+//		}
 
 //		学生を取得
 		StudentDao dao=new StudentDao();
-		if (dao.get(request.getParameter("no"))!=null) {
-			return "student_create.jsp";
-		}
+//		if (dao.get(request.getParameter("no"))!=null) {
+//			return "student_create.jsp";
+//		}
 
 //		学生を登録
 		Student student=new Student();
