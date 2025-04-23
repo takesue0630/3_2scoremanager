@@ -16,7 +16,7 @@
 <div style="width:30%; padding:10px;">
 <label>入学年度</label>
 <br>
-<select name="ent_year" style="width:100%; height:30px;">
+<select name="f1" style="width:100%; height:30px;">
 	<option value="0">--------</option>
 </select>
 </div>
@@ -24,13 +24,13 @@
 <div style="width:30%; padding:10px;">
 <label>クラス</label>
 <br>
-<select name="class_num" style="width:100%; height:30px;">
+<select name="f2" style="width:100%; height:30px;">
 	<option value="0">--------</option>
 </select>
 </div>
 
 <div style="text-align:center; width:20%; margin:auto;">
-<input type="checkbox">在学中
+<input type="checkbox" name="f3">在学中
 </div>
 
 <div style="text-align:center; width:20%; margin:auto;">
@@ -47,29 +47,30 @@
 
 		<table style="width:100%;">
 		<thead>
-		<th style="text-align:left; width:20%;">入学年度</th>
-		<th style="text-align:left; width:20%;">学生番号</th>
-		<th style="text-align:left; width:25%;">氏名</th>
-		<th style="width:15%;">クラス</th>
-		<th style="width:10%;">在学中</th>
+			<th style="text-align:left; width:20%;">入学年度</th>
+			<th style="text-align:left; width:20%;">学生番号</th>
+			<th style="text-align:left; width:25%;">氏名</th>
+			<th style="width:15%;">クラス</th>
+			<th style="width:10%;">在学中</th>
 		</thead>
 
-
+		<tbody>
 		<c:forEach var="student" items="${list}">
 			<tr>
-				<td style="border-top:2px solid #DCDCDC;">${ student.entYear }</td>
-				<td style="border-top:2px solid #DCDCDC;">${ student.no }</td>
-				<td style="border-top:2px solid #DCDCDC;">${ student.name }</td>
-				<td style="text-align:center; border-top:2px solid #DCDCDC;">${ student.classNum }</td>
-				<td style="text-align:center; border-top:2px solid #DCDCDC;">
+				<td>${ student.entYear }</td>
+				<td>${ student.no }</td>
+				<td>${ student.name }</td>
+				<td style="text-align:center;">${ student.classNum }</td>
+				<td style="text-align:center;">
 					<c:choose>
 						<c:when test="${ student.isAttend }">〇</c:when>
 						<c:otherwise>×</c:otherwise>
 					</c:choose>
 				</td>
-				<td style="border-top:2px solid #DCDCDC;"><a href="StudentUpdate.action?no=${ student.no }&&">変更</a></td>
+				<td style="text-align:center;"><a href="StudentUpdate.action?no=${ student.no }&&">変更</a></td>
 			<tr>
 		</c:forEach>
+		</tbody>
 
 		</table>
 	</c:when>
