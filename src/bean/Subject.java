@@ -4,39 +4,52 @@ import java.io.Serializable;
 
 public class Subject implements Serializable {
 
-    private String subjectCode;
-    private String subjectName;
+    private String cd;
+    private String name;
+    private String shool;
 
 
     public Subject() {}
 
-    public Subject(String subjectCode, String subjectName) {
-        this.subjectCode = subjectCode;
-        this.subjectName = subjectName;
+    public Subject(String cd, String name, String shool) {
+        this.cd = cd;
+        this.name = name;
+        this.shool = shool;
+
     }
 
 
-    public String getSubjectCode() {
-        return subjectCode;
+    public String getcd() {
+        return cd;
     }
 
-    public void setSubjectCode(String subjectCode) {
-        this.subjectCode = subjectCode;
+    public void setc(String cd) {
+        this.cd = cd;
     }
 
-    public String getSubjectName() {
-        return subjectName;
+    public String getname() {
+        return name;
     }
 
-    public void setSubjectName(String subjectName) {
-        this.subjectName = subjectName;
+    public void setname(String name) {
+        this.name = name;
+    }
+
+    public String getshool() {
+        return shool;
+    }
+
+    public void setshool(String shool) {
+        this.shool = shool;
     }
 
     @Override
     public String toString() {
         return "SubjectBean{" +
-                "subjectCode='" + subjectCode + '\'' +
-                ", subjectName='" + subjectName + '\'' +
+                "cd='" + cd + '\'' +
+                ", name='" + name + '\'' +
+                ", shool="+ shool + '\'' +
+
                 '}';
     }
 }
