@@ -9,7 +9,7 @@
 
 <p style="text-align: right;"><a href="StudentCreate.action">新規登録</a></p>
 
-<form action="" method="get">
+<form action="StudentList.action" method="get">
 
 <div style="border:2px solid #DCDCDC; border-radius:5px; margin:10px; display:flex;">
 
@@ -18,6 +18,9 @@
 <br>
 <select name="f1" style="width:100%; height:30px;">
 	<option value="0">--------</option>
+	<c:forEach var="year" items="${ ent_year_set }">
+		<option value="${ year }" <c:if test="${ year==f1 }">selected</c:if>>${ year }</option>
+	</c:forEach>
 </select>
 </div>
 
@@ -26,6 +29,9 @@
 <br>
 <select name="f2" style="width:100%; height:30px;">
 	<option value="0">--------</option>
+	<c:forEach var="num" items="${ class_num_set }">
+		<option value="${ num }" <c:if test="${ num==f2 }">selected</c:if>>${ num }</option>
+	</c:forEach>
 </select>
 </div>
 
