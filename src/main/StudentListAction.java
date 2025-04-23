@@ -25,10 +25,41 @@ public class StudentListAction extends Action {
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher)session.getAttribute("teacher");
 
+		int ent_year=0;
+		if (request.getParameter("f1")!=null) {
+			ent_year=Integer.parseInt(request.getParameter("f1"));
+		}
+		System.out.println(ent_year);
+
+		String class_num="0";
+		if (request.getParameter("f2")!=null) {
+			class_num=request.getParameter("f2");
+		}
+		System.out.println(class_num);
+
+		boolean is_attend;
+		if (request.getParameter("f3")!=null) {
+			is_attend=true;
+		} else {
+			is_attend=false;
+		}
+		System.out.println(is_attend);
+
 //		セッションのユーザーデータから、ユーザーが所属している学校の生徒一覧用データを取得
 		School school=teacher.getSchool();
 		StudentDao dao=new StudentDao();
-		List<Student> list=dao.filter(school,true);
+		List<Student> list;
+//		List<Student> list=dao.filter(school, true);
+
+		if (class_num.equals("0")) {
+			if (ent_year==0) {
+				list=dao.filter(school,is_attend);
+			} else {
+				list=dao.filter(school,ent_year,is_attend);
+			}
+		} else {
+			list=dao.filter(school,ent_year,class_num,is_attend);
+		}
 
 //		セッションに生徒のリストとリストサイズを格納
 		session.setAttribute("list", list);

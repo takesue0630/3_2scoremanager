@@ -65,16 +65,26 @@ public class StudentDao extends DAO{
 	public List<Student> filter(School school, int entYear, String classNum, boolean isAttend) throws Exception{
 
 		Connection con=getConnection();
+		PreparedStatement st;
 
-		PreparedStatement st=con.prepareStatement(
-			baseSql+" and ent_year=? and class_num=? and is_attend=?"
-		);
-		st.setString(1, school.getCd());
-		st.setInt(2, entYear);
-		st.setString(3, classNum);
-		st.setBoolean(4, isAttend);
+		if (isAttend) {
+			st=con.prepareStatement(
+				baseSql+" and ent_year=? and class_num=? and is_attend=?"
+			);
+			st.setString(1, school.getCd());
+			st.setInt(2, entYear);
+			st.setString(3, classNum);
+			st.setBoolean(4, isAttend);
+		} else {
+			st=con.prepareStatement(
+				baseSql+" and ent_year=? and class_num=?"
+			);
+			st.setString(1, school.getCd());
+			st.setInt(2, entYear);
+			st.setString(3, classNum);
+		}
+
 		ResultSet rs=st.executeQuery();
-
 		List<Student> list=postFilter(rs,school);
 
 		st.close();
@@ -86,15 +96,24 @@ public class StudentDao extends DAO{
 	public List<Student> filter(School school, int entYear, boolean isAttend) throws Exception{
 
 		Connection con=getConnection();
+		PreparedStatement st;
 
-		PreparedStatement st=con.prepareStatement(
-			baseSql+" and ent_year=? and is_attend=?"
-		);
-		st.setString(1, school.getCd());
-		st.setInt(2, entYear);
-		st.setBoolean(3, isAttend);
+		if (isAttend) {
+			st=con.prepareStatement(
+				baseSql+" and ent_year=? and is_attend=?"
+			);
+			st.setString(1, school.getCd());
+			st.setInt(2, entYear);
+			st.setBoolean(3, isAttend);
+		} else {
+			st=con.prepareStatement(
+				baseSql+" and ent_year=?"
+			);
+			st.setString(1, school.getCd());
+			st.setInt(2, entYear);
+		}
+
 		ResultSet rs=st.executeQuery();
-
 		List<Student> list=postFilter(rs,school);
 
 		st.close();
@@ -113,14 +132,15 @@ public class StudentDao extends DAO{
 			st=con.prepareStatement(
 				baseSql+" and is_attend=?"
 			);
+			st.setString(1, school.getCd());
+			st.setBoolean(2, isAttend);
 		} else {
 			st=con.prepareStatement(
 				baseSql
 			);
+			st.setString(1, school.getCd());
 		}
 
-		st.setString(1, school.getCd());
-		st.setBoolean(2, isAttend);
 		ResultSet rs=st.executeQuery();
 
 		List<Student> list=postFilter(rs,school);
