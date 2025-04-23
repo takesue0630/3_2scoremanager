@@ -137,7 +137,7 @@ public class StudentDao extends DAO{
 		PreparedStatement st;
 		boolean result;
 
-		if (get(student.getNo())==null) {
+		if (get(student.getNo()).getNo()==null) {
 
 			st=con.prepareStatement(
 				"insert into student values (?,?,?,?,?,?)"
