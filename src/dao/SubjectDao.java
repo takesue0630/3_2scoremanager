@@ -8,7 +8,6 @@ import java.util.List;
 import bean.School;
 import bean.Student;
 import bean.Subject;
-
 public class SubjectDao extends DAO{
 	public Subject get(String cd,School school)throws Exception{
 		Connection con=getConnection();
