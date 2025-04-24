@@ -45,7 +45,6 @@ public class LoginAction implements Action {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return; // forward した時点で処理を終える
         }
-
         if (teacher != null) {
             session.setAttribute("teacher", teacher);
             response.sendRedirect("menu.jsp");
@@ -55,3 +54,4 @@ public class LoginAction implements Action {
         }
     }
 }
+

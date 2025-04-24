@@ -71,10 +71,8 @@ public class ClassNumDao extends DAO{
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"insert into class_num values (?,?)"
+			""
 		);
-		st.setString(1, classNum.getSchool().getCd());
-		st.setString(2, classNum.getClass_num());
 
 		st.close();
 		con.close();

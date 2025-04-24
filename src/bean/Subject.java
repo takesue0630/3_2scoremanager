@@ -6,41 +6,41 @@ public class Subject implements Serializable {
 
     private String cd;
     private String name;
-    private String shool;
+    private School school;
 
 
     public Subject() {}
 
-    public Subject(String cd, String name, String shool) {
+    public Subject(String cd, String name, School school) {
         this.cd = cd;
         this.name = name;
-        this.shool = shool;
+        this.school = school;
 
     }
 
 
-    public String getcd() {
+    public String getCd() {
         return cd;
     }
 
-    public void setc(String cd) {
+    public void setCd(String cd) {
         this.cd = cd;
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getshool() {
-        return shool;
+    public School getSchool() {
+        return school;
     }
 
-    public void setshool(String shool) {
-        this.shool = shool;
+    public void setShool(School school) {
+        this.school = school;
     }
 
 }
