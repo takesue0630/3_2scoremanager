@@ -4,4 +4,5 @@
 
 エラーが発生しました。
 
+
 <%@include file="../footer.jsp" %>
