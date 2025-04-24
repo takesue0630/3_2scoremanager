@@ -33,12 +33,12 @@ public class StudentCreateAction extends Action {
 //		現在年を格納
 	    c.setTime(new Date());
 //	    十年前から十年後までのリストを作成
-	    List<String> year=new ArrayList<>();
+	    List<String> ent_year=new ArrayList<>();
 	    for (int i = -10; i <= 10; i++) {
-	    	year.add(""+(c.get(Calendar.YEAR)+i)+"");
+	    	ent_year.add(""+(c.get(Calendar.YEAR)+i)+"");
 	    }
 //	    リクエスト属性に格納
-	    request.setAttribute("year", year);
+	    request.setAttribute("ent_year", ent_year);
 
 		return "student_create.jsp";
 	}
