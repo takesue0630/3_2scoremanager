@@ -9,9 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import tool.Action;
 
-public class LogoutAction implements Action {
-    @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class LogoutAction extends Action {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 現在のセッションを取得 (存在しない場合は null を返す)
         HttpSession session = request.getSession(false);
 
@@ -22,6 +21,7 @@ public class LogoutAction implements Action {
 
         // ログアウト完了画面へリダイレクト
         response.sendRedirect(request.getContextPath() + "/logout_done.jsp");
+		return null;
 
         // または、ログイン画面へリダイレクトする場合
         // response.sendRedirect(request.getContextPath() + "/Login.action?logout=true");

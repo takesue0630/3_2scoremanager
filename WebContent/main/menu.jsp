@@ -10,9 +10,6 @@
     }
 </style>
 
-<div class="logout-container">
-    <a href="<%= request.getContextPath() %>/Logout.action">ログアウト</a>
-</div>
 
 <h2>メニュー</h2>
 

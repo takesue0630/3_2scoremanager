@@ -13,9 +13,8 @@ import bean.Teacher;
 import dao.TeacherDao;
 import tool.Action;
 
-public class LoginExecuteAction implements Action {
-    @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class LoginExecuteAction extends Action {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // ログインフォームから送信された ID とパスワードを取得
         String loginId = request.getParameter("loginId");
         String password = request.getParameter("password");
@@ -30,17 +29,17 @@ public class LoginExecuteAction implements Action {
             e.printStackTrace();
             request.setAttribute("errorMessage", "データベースエラーが発生しました。");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
-            return;
+            return null;
         } catch (NamingException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "データソースの設定エラーが発生しました。");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
-            return;
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "予期せぬエラーが発生しました。");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
-            return;
+            return null;
         }
 
         // 認証結果に基づいて処理を分岐
@@ -54,5 +53,6 @@ public class LoginExecuteAction implements Action {
             request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。"); // エラーメッセージをリクエスト属性に設定
             request.getRequestDispatcher("/login.jsp").forward(request, response); // ログイン画面へフォワード (エラーメッセージを表示)
         }
+		return null;
     }
 }
