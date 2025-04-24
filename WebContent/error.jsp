@@ -1,9 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
-<footer>
+<%@include file="../header.jsp" %>
+<%@include file="../sidebar.jsp" %>
 
 エラーが発生しました。
 
-</footer>
-
-</body>
-</html>
+<%@include file="../footer.jsp" %>

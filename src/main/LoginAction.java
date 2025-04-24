@@ -25,9 +25,10 @@ public class LoginAction extends Action {
 		if (teacher!=null) {
 
 			session.setAttribute("teacher", teacher);
+
 			return "menu.jsp";
 		}
 
-		return "login.jsp";
+		return "../error.jsp";
 	}
 }
