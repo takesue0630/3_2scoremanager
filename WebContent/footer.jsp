@@ -1,10 +1,8 @@
 <%@page contentType="text/html; charset=UTF-8" %>
-</div>
-</div>
-<footer>
+<footer style="text-align: center; background-color: #ccc;">
 
-<p>© 2023 TIC</p>
-<p>大原学園</p>
+<p>© 2023 TIC<br>
+大原学園</p>
 
 </footer>
 
