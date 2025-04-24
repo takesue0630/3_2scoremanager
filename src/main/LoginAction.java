@@ -43,7 +43,6 @@ public abstract class LoginAction extends Action {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return null; // forward した時点で処理を終える
         }
-
         if (teacher != null) {
             session.setAttribute("teacher", teacher);
             response.sendRedirect("/menu.jsp");
@@ -54,3 +53,4 @@ public abstract class LoginAction extends Action {
 		return null;
     }
 }
+
