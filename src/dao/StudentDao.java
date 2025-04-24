@@ -126,7 +126,6 @@ public class StudentDao extends DAO{
 	public List<Student> filter(School school, boolean isAttend) throws Exception{
 
 		Connection con=getConnection();
-
 		PreparedStatement st;
 
 		if (isAttend) {

@@ -2,21 +2,56 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
 
 import bean.School;
+import bean.Student;
 import bean.Subject;
 
-//まだ未完成
 public class SubjectDao extends DAO{
-	public subject get(String cd,School school)throws Exception{
-		return pass;
+	public Subject get(String cd,School school)throws Exception{
+		Connection con=getConnection();
+		PreparedStatement st;
+
+		st=con.prepareStatement(
+				"SELECT * FROM subject WHERE CD = ? AND SCHOOL_CD = ?"
+				);
+		st.setString(1, cd);
+		st.setString(2, school.getCd());
+		ResultSet rs=st.executeQuery();
+
+		Subject s=new Subject();
+		if (rs.next()) {
+			s.setCd(rs.getString("cd"));
+			School sc=new School();
+			sc.setCd(rs.getString("cd"));
+			sc.setName(rs.getString("name"));
+		}
+
+		st.close();
+		con.close();
+
+		return s;
 	}
 
+	//まだ未完成
 	public List<Subject> filter(School school)throws Exception{
 		Connection con=getConnection();
 		PreparedStatement st;
 
-		return pass;
+		st = con.prepareStatement(
+				"select * from subject join school where cd=?"
+				);
+		st.setString(1, school.getCd());
+		ResultSet rs=st.executeQuery();
+
+		List<Student> list=postFilter(rs,school);
+
+		st.close();
+		con.close();
+
+		return list;
 	}
 
 	public boolean save(Subject subject) throws Exception {
@@ -53,5 +88,5 @@ public class SubjectDao extends DAO{
 			con.close();
 
 	        return result;
-	        }
+	 }
 }
