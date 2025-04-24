@@ -40,7 +40,6 @@ public class StudentCreateExecuteAction extends Action {
 		student.setIsAttend(true);
 		student.setSchool(teacher.getSchool());
 
-
 //		入力された値をDBに保存
 		try {
 			dao.save(student);
