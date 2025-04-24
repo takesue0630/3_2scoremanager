@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" %>
-<footer style="text-align: center; background-color: #ccc;">
+<footer style="text-align: center; background-color: #ccc; ">
 
 <p>© 2023 TIC<br>
 大原学園</p>
