@@ -25,14 +25,45 @@ public class StudentListAction extends Action {
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher)session.getAttribute("teacher");
 
+//		検索項目の取得
+//		入学年度
+		int ent_year=0;
+		if (request.getParameter("f1")!=null) {
+			ent_year=Integer.parseInt(request.getParameter("f1"));
+		}
+//		クラス番号
+		String class_num="0";
+		if (request.getParameter("f2")!=null) {
+			class_num=request.getParameter("f2");
+		}
+//		在学中
+		boolean is_attend;
+		if (request.getParameter("f3")!=null) {
+			is_attend=true;
+		} else {
+			is_attend=false;
+		}
+
 //		セッションのユーザーデータから、ユーザーが所属している学校の生徒一覧用データを取得
 		School school=teacher.getSchool();
 		StudentDao dao=new StudentDao();
-		List<Student> list=dao.filter(school,true);
+
+//		一覧用のリスト作成
+		List<Student> list;
+		if (class_num.equals("0")) {
+			if (ent_year==0) {
+				list=dao.filter(school,is_attend);
+			} else {
+				list=dao.filter(school,ent_year,is_attend);
+			}
+		} else {
+			list=dao.filter(school,ent_year,class_num,is_attend);
+		}
 
 //		セッションに生徒のリストとリストサイズを格納
 		session.setAttribute("list", list);
 		session.setAttribute("size", list.size());
+
 
 //		カレンダーオブジェクトの生成
 		Calendar c = Calendar.getInstance();

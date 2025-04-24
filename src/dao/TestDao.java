@@ -1,4 +1,34 @@
 package dao;
 
-public class TestDao {
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.Date;
+
+import bean.School;
+import bean.Student;
+import bean.Subject;
+
+//まだ未完成
+public class TestDao extends Date{
+	private String baseSql="select * from student join school where cd=?";
+
+	public Test get(Student student,Subject subject,School school,int no) throws Exception{
+		return pass;
+	}
+
+	public List<Test> PostFilter(ResultSet rSet,School school)throws Exception{
+		return pass;
+	}
+
+	public List<Test> filter(int entYear,String classNum,Subject subject,int num,School school)throws Exception{
+		return pass;
+	}
+
+	public boolean save(List<Test> list) throws Exception{
+		return pass;
+	}
+
+	public boolean save(Test test,Connection connection) throws Exception{
+		return pass;
+	}
 }

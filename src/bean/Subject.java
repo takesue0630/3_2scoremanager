@@ -43,13 +43,4 @@ public class Subject implements Serializable {
         this.shool = shool;
     }
 
-    @Override
-    public String toString() {
-        return "SubjectBean{" +
-                "cd='" + cd + '\'' +
-                ", name='" + name + '\'' +
-                ", shool="+ shool + '\'' +
-
-                '}';
-    }
 }
