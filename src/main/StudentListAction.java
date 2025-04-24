@@ -64,6 +64,7 @@ public class StudentListAction extends Action {
 		session.setAttribute("list", list);
 		session.setAttribute("size", list.size());
 
+
 //		カレンダーオブジェクトの生成
 		Calendar c = Calendar.getInstance();
 //		現在年を格納
