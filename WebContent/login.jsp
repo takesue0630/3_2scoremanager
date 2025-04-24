@@ -57,7 +57,7 @@
         <input type="text" name="id" placeholder="半角でご入力ください" required>
 
         <input type="password" name="password" placeholder="30文字以内の半角英数字でご入力ください" required>
-     <p><input type="checkbox" id="showPassword">パスワードを表示</p>
+     <label><p><input type="checkbox" id="showPassword">パスワードを表示</p></label>
 
         <input type="submit" value="ログイン">
 
