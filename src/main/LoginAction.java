@@ -13,12 +13,10 @@ import bean.Teacher;
 import dao.TeacherDao;
 import tool.Action;
 
-public class LoginAction implements Action {
-    @Override // Action インターフェースの execute メソッドをオーバーライド
-    public void execute(
-        HttpServletRequest request, HttpServletResponse response
-    ) throws ServletException, IOException {
+public abstract class LoginAction extends Action {
 
+	    public String execute(HttpServletRequest request, HttpServletResponse response)
+	            throws ServletException, IOException {
         HttpSession session = request.getSession();
 
         String id = request.getParameter("id");
@@ -33,17 +31,17 @@ public class LoginAction implements Action {
             e.printStackTrace();
             request.setAttribute("errorMessage", "データベースエラーが発生しました。");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            return; // forward した時点で処理を終える
+            return null; // forward した時点で処理を終える
         } catch (NamingException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "データソースの設定エラーが発生しました。");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            return; // forward した時点で処理を終える
+            return null; // forward した時点で処理を終える
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "予期せぬエラーが発生しました。");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            return; // forward した時点で処理を終える
+            return null; // forward した時点で処理を終える
         }
 
         if (teacher != null) {
@@ -53,5 +51,6 @@ public class LoginAction implements Action {
             request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+		return null;
     }
 }
