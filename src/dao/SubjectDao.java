@@ -4,6 +4,7 @@ import java.util.Date;
 
 import bean.School;
 
+//まだ未完成
 public class SubjectDao extends Date{
 	public subject get(String cd,School school)throws Exception{
 		return pass;
