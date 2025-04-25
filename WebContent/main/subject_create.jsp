@@ -5,7 +5,7 @@
 <h2> 科目情報登録</h2>
 </div>
 
-<form action="../login.jsp" method="get">
+<form action="subject_create_done.jsp" method="get">
 <label>科目コード</label>
 <br>
 <input type="text" name="cd" value="${cd}"  maxlength="3"  placeholder="科目コードを入力してください" required>
@@ -15,7 +15,9 @@
 <input type="text" name="cd" value="${cd}" maxlength="20"  placeholder="科目名を入力してください"  required>
 <br>
 
-    <button type="submit" style="color: white; background-color: blue;">登録</button>
+    <button type="submit"
+    style="color: white;/*文字の色を白*/ background-color: blue; /*背景の色を青*/
+    border-radius: 3px 3px 3px 3px;  /* 角を丸くする */">登録</button>
 </form>
 <a href="subject_list.jsp">戻る</a>
 
