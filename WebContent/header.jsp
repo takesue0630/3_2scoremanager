@@ -55,6 +55,6 @@
     <div class="sub-menu">
         <span>${ teacher.name }</span>
         <a href="login.jsp">ログイン</a>
-        <a href="logout.jsp">ログアウト</a>
+        <a href="../logout.jsp">ログアウト</a>
     </div>
 </header>
