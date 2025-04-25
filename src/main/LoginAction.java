@@ -13,9 +13,10 @@ import bean.Teacher;
 import dao.TeacherDao;
 import tool.Action;
 
-public class LoginAction extends Action { // abstract キーワードを削除
-    public String execute(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+public class LoginAction extends Action {
+		@Override
+	    public String execute(HttpServletRequest request, HttpServletResponse response)
+	            throws ServletException, IOException {
         HttpSession session = request.getSession();
 
         String id = request.getParameter("id");
@@ -52,3 +53,4 @@ public class LoginAction extends Action { // abstract キーワードを削除
 		return null;
     }
 }
+
