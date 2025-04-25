@@ -2,6 +2,7 @@
 <%@include file="../header.jsp" %>
 <%@include file="../sidebar.jsp" %>
 
+
 <h2>学生情報登録</h2>
 
 <p>登録が完了しました</p>
