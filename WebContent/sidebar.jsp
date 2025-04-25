@@ -11,7 +11,7 @@
 成績管理
 <ul>
 
-<li><a href="main/test_regist">成績登録</a></li>
+<li><a href="TestRegist.action">成績登録</a></li>
 
 <li><a href="main/test_list">成績参照</a></li>
 
