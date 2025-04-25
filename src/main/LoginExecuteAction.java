@@ -14,17 +14,30 @@ import dao.TeacherDao;
 import tool.Action;
 
 public class LoginExecuteAction extends Action {
+    @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // ログインフォームから送信された ID とパスワードを取得
-        String loginId = request.getParameter("loginId");
+        HttpSession session = request.getSession();
+
+        String id = request.getParameter("id");
         String password = request.getParameter("password");
 
-        // TeacherDao を使用してログイン認証を行う
-        TeacherDao teacherDao = new TeacherDao();
-        Teacher loggedInTeacher = null;
+        // 必須項目未入力チェック
+        if (id == null || id.trim().isEmpty()) {
+            request.setAttribute("idError", "IDを入力してください。");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return null;
+        }
+        if (password == null || password.trim().isEmpty()) {
+            request.setAttribute("passwordError", "パスワードを入力してください。");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return null;
+        }
+
+        TeacherDao dao = new TeacherDao();
+        Teacher teacher = null;
 
         try {
-            loggedInTeacher = teacherDao.login(loginId, password);
+            teacher = dao.login(id, password);
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "データベースエラーが発生しました。");
@@ -42,17 +55,13 @@ public class LoginExecuteAction extends Action {
             return null;
         }
 
-        // 認証結果に基づいて処理を分岐
-        if (loggedInTeacher != null) {
-            // ログイン成功
-            HttpSession session = request.getSession();
-            session.setAttribute("loggedInUser", loggedInTeacher); // セッションにログイン情報を保存
-            response.sendRedirect(request.getContextPath() + "/main/menu.jsp"); // メニュー画面へリダイレクト
+        if (teacher != null) {
+            session.setAttribute("teacher", teacher);
+            response.sendRedirect(request.getContextPath() + "/main/menu.jsp"); // menu.jsp が /main 直下にあると想定
         } else {
-            // ログイン失敗
-            request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。"); // エラーメッセージをリクエスト属性に設定
-            request.getRequestDispatcher("/login.jsp").forward(request, response); // ログイン画面へフォワード (エラーメッセージを表示)
+            request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
-		return null;
+        return null;
     }
 }

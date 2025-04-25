@@ -20,8 +20,8 @@ public class FrontController extends HttpServlet {
             String path=request.getServletPath().substring(1);
             String name=path.replace(".a", "A").replace('/', '.');
             Action action=(Action)Class.forName(name).getDeclaredConstructor().newInstance();
-            action.execute(request, response); // execute メソッドは void なので、戻り値を受け取らない
-            // forward または redirect は Action クラス内で実行される
+            String url=action.execute(request, response); // execute メソッドは void なので、戻り値を受け取らない
+            request.getRequestDispatcher(url).forward(request,response);// forward または redirect は Action クラス内で実行される
         } catch (Exception e) {
             e.printStackTrace(out);
         }

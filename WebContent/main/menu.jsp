@@ -18,7 +18,7 @@
 <div>
     成績管理
     <br>
-    <a href="test_regist">成績登録</a>
+    <a href="TestRegist.action">成績登録</a>
     <br>
     <a href="test_list">成績参照</a>
 </div>
