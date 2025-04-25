@@ -56,12 +56,13 @@ public class LoginExecuteAction extends Action {
         }
 
         if (teacher != null) {
-            session.setAttribute("teacher", teacher);
-            response.sendRedirect(request.getContextPath() + "/main/menu.jsp"); // menu.jsp が /main 直下にあると想定
+            // ログイン成功
+            // ...
         } else {
-            request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            // ログイン失敗
+            request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。"); // エラーメッセージをリクエスト属性に設定
+            request.getRequestDispatcher("/login.jsp").forward(request, response); // ログイン画面へフォワード (エラーメッセージを表示)
         }
-        return null;
+		return null;
     }
 }

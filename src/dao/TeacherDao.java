@@ -7,60 +7,56 @@ import java.sql.ResultSet;
 import bean.School;
 import bean.Teacher;
 
-public class TeacherDao extends DAO{
+public class TeacherDao extends DAO {
 
-	public Teacher get(String id) throws Exception{
+    public Teacher get(String id) throws Exception {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement(
+                "select * from teacher join school on teacher.school_cd=school.cd where id=?");
+        st.setString(1, id);
+        ResultSet rs = st.executeQuery();
 
-		Connection con=getConnection();
+        Teacher t = null; // 初期値を null に
+        if (rs.next()) {
+            t = new Teacher();
+            t.setId(rs.getString("id"));
+            t.setPassword(rs.getString("password"));
+            t.setName(rs.getString("name"));
+            School sc = new School();
+            sc.setCd(rs.getString("cd"));
+            sc.setName(rs.getString("name"));
+            t.setSchool(sc);
+        }
 
-		PreparedStatement st=con.prepareStatement(
-			"select * from teacher join school on teacher.school_cd=school.cd where id=?"
-		);
-		st.setString(1, id);
-		ResultSet rs=st.executeQuery();
+        st.close();
+        con.close();
 
-		Teacher t=new Teacher();
-		if (rs.next()) {
-			t.setId(rs.getString("id"));
-			t.setPassword(rs.getString("password"));
-			t.setName(rs.getString("name"));
-			School sc=new School();
-			sc.setCd(rs.getString("cd"));
-			sc.setName(rs.getString("name"));
-			t.setSchool(sc);
-		}
+        return t;
+    }
 
-		st.close();
-		con.close();
+    public Teacher login(String id, String password) throws Exception {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement(
+                "select * from teacher join school on teacher.school_cd=school.cd where id=? and password=?");
+        st.setString(1, id);
+        st.setString(2, password);
+        ResultSet rs = st.executeQuery();
 
-		return t;
-	}
+        Teacher t = null; // 初期値を null に
+        if (rs.next()) {
+            t = new Teacher();
+            t.setId(rs.getString("id"));
+            t.setPassword(rs.getString("password"));
+            t.setName(rs.getString("name"));
+            School sc = new School();
+            sc.setCd(rs.getString("cd"));
+            sc.setName(rs.getString("name"));
+            t.setSchool(sc);
+        }
 
-	public Teacher login(String id, String password) throws Exception{
+        st.close();
+        con.close();
 
-		Connection con=getConnection();
-
-		PreparedStatement st=con.prepareStatement(
-			"select * from teacher join school on teacher.school_cd=school.cd where id=? and password=?"
-		);
-		st.setString(1, id);
-		st.setString(2, password);
-		ResultSet rs=st.executeQuery();
-
-		Teacher t=new Teacher();
-		if (rs.next()) {
-			t.setId(rs.getString("id"));
-			t.setPassword(rs.getString("password"));
-			t.setName(rs.getString("name"));
-			School sc=new School();
-			sc.setCd(rs.getString("cd"));
-			sc.setName(rs.getString("name"));
-			t.setSchool(sc);
-		}
-
-		st.close();
-		con.close();
-
-		return t;
-	}
+        return t;
+    }
 }
