@@ -13,7 +13,7 @@ import bean.Teacher;
 import dao.TeacherDao;
 import tool.Action;
 
-public class LoginAction extends Action {
+public class LoginAction2 extends Action {
 		@Override
 	    public String execute(HttpServletRequest request, HttpServletResponse response)
 	            throws ServletException, IOException {
