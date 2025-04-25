@@ -5,6 +5,7 @@
 <h2> 科目情報登録</h2>
 </div>
 
+
 <form action="subject_create_done.jsp" method="get">
 <label>科目コード</label>
 <br>

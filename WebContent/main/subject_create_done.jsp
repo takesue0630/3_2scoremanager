@@ -5,6 +5,7 @@
 <h2> 科目情報登録</h2>
 </div>
 
+
 <div style="background-color: green;">
 <p>登録が完了しました。</p>
 </div>
