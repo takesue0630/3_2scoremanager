@@ -17,12 +17,13 @@ public class FrontController extends HttpServlet {
         PrintWriter out=response.getWriter();
 
         try {
-            String path=request.getServletPath().substring(1);
-            String name=path.replace(".a", "A").replace('/', '.');
-            Action action=(Action)Class.forName(name).getDeclaredConstructor().newInstance();
-            String url=action.execute(request, response); // execute メソッドは void なので、戻り値を受け取らない
-            request.getRequestDispatcher(url).forward(request,response);// forward または redirect は Action クラス内で実行される
-        } catch (Exception e) {
+        	String path = request.getServletPath().substring(1);
+        	String classNamePart = path.replace(".action", "").replace('/', '.');
+        	String fullClassName = "main." + classNamePart.substring(classNamePart.lastIndexOf('.') + 1) + "Action";
+        	Action action = (Action) Class.forName(fullClassName).getDeclaredConstructor().newInstance();
+        	String url = action.execute(request, response);
+        	request.getRequestDispatcher(url).forward(request, response);
+        	} catch (Exception e) {
             e.printStackTrace(out);
         }
     }

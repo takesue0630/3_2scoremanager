@@ -50,7 +50,7 @@ public class LoginAction extends Action {
             request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-		return null;
+		return "menu.jsp";
     }
 }
 
