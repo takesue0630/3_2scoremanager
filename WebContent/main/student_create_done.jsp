@@ -2,6 +2,7 @@
 <%@include file="../header.jsp" %>
 <%@include file="../sidebar.jsp" %>
 
+<div class="main">
 
 <h2>学生情報登録</h2>
 
@@ -10,5 +11,7 @@
 <a href="StudentCreate.action">戻る</a>
 
 <a href="StudentList.action">学生一覧</a>
+
+</div>
 
 <%@include file="../footer.jsp" %>

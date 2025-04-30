@@ -3,6 +3,8 @@
 <%@include file="../header.jsp" %>
 <%@include file="../sidebar.jsp" %>
 
+<div class="main">
+
 <h2 style="background-color: #DCDCDC;">学生情報変更</h2>
 
 <form action="StudentUpdateExecute.action" method="get" class="insert">
@@ -38,5 +40,7 @@
 </form>
 
 <a href="StudentList.action">戻る</a>
+
+</div>
 
 <%@include file="../footer.jsp" %>

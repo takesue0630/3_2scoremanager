@@ -3,7 +3,7 @@
 <%@include file="../header.jsp" %>
 <%@include file="../sidebar.jsp" %>
 
-<div style="width:100%;">
+<div class="main">
 
 <h2 style="background-color: #DCDCDC;">学生管理</h2>
 
