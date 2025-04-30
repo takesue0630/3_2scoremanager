@@ -21,7 +21,13 @@ public class StudentUpdateExecuteAction extends Action {
 		student.setName(request.getParameter("name"));
 		student.setEntYear(Integer.parseInt(request.getParameter("ent_year")));
 		student.setClassNum(request.getParameter("class_num"));
-		student.setIsAttend(true);
+		if (request.getParameter("is_attend")==null) {
+			student.setIsAttend(false);
+		} else {
+			student.setIsAttend(true);
+		}
+
+		System.out.println(request.getParameter("is_attend"));
 
 		Teacher teacher=(Teacher)session.getAttribute("teacher");
 		student.setSchool(teacher.getSchool());

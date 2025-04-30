@@ -1,50 +1,37 @@
 <%@page contentType="text/html; charset=UTF-8" %>
-<%@page import="java.util.List"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../header.jsp" %>
 <%@include file="../sidebar.jsp" %>
 
-<%
-List<String> class_num=(List<String>)request.getAttribute("class_num");
-%>
-
-<h2>学生情報変更</h2>
+<h2 style="background-color: #DCDCDC;">学生情報変更</h2>
 
 <form action="StudentUpdateExecute.action" method="get" class="insert">
 
-<p>
+<div style="margin-top:10px; margin-bottom:10px;">
 <label>入学年度</label>
-<br>
-<input class="boader_none" type="text" name="ent_year" value="${ student.entYear }" readonly>
-</p>
+<input class="boader_none" type="text" name="ent_year" value="${ student.entYear }" readonly style="border:none; outline:none; width:100%; padding:10px; margin-top:10px; margin-bottom:10px;">
+</div>
 
-<p>
+<div style="margin-top:10px; margin-bottom:10px;">
 <label>学生番号</label>
-<br>
-<input class="boader_none" type="text" name="no" value="${ student.no }" readonly>
-</p>
+<input class="boader_none" type="text" name="no" value="${ student.no }" readonly  style="border:none; outline:none; width:100%; padding:10px; margin-top:10px; margin-bottom:10px;">
+</div>
 
-<p>
+<div style="margin-top:10px; margin-bottom:10px;">
 <label>氏名</label>
-<br>
-<input type="text" name="name" maxlength="30" value="${ student.name }" placeholder="氏名を入力してください" required>
-</p>
+<input type="text" name="name" maxlength="30" value="${ student.name }" placeholder="氏名を入力してください" required  style="width:100%; padding:10px; margin-top:10px; margin-bottom:10px;">
+</div>
 
-<p>
+<div style="margin-top:10px; margin-bottom:10px;">
 <label>クラス</label>
-<br>
-
-<select name="class_num">
-<% if (class_num!=null) { %>
-	<% int count=0; %>
-	<% while (count!=class_num.size()) { %>
-		<option value=<%=class_num.get(count) %>><%=class_num.get(count) %></option>
-		<% count++; %>
-	<% } %>
-<% } %>
+<select name="class_num" style="width:100%; padding:10px; margin-top:10px; margin-bottom:10px;">
+	<c:forEach var="classnum" items="${ class_num }">
+		<option value="${ classnum }">${ classnum }</option>
+	</c:forEach>
 </select>
-</p>
+</div>
 
-在学中<input type="checkbox"><br>
+在学中<input type="checkbox" name="is_attend" <c:if test="${ student.isAttend }">checked</c:if>><br>
 
 <input type="submit" value="変更">
 
