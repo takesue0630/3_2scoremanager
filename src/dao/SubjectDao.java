@@ -3,10 +3,10 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import bean.School;
-import bean.Student;
 import bean.Subject;
 public class SubjectDao extends DAO{
 	public Subject get(String cd,School school)throws Exception{
@@ -40,12 +40,19 @@ public class SubjectDao extends DAO{
 		PreparedStatement st;
 
 		st = con.prepareStatement(
-				"select * from subject join school where cd=?"
-				);
+			"select * from subject where school_cd=?"
+		);
 		st.setString(1, school.getCd());
 		ResultSet rs=st.executeQuery();
 
-		List<Student> list=postFilter(rs,school);
+		List<Subject> list=new ArrayList<Subject>();
+		while (rs.next()) {
+			Subject s=new Subject();
+			s.setCd(rs.getString("cd"));
+			s.setName(rs.getString("name"));
+			s.setShool(school);
+			list.add(s);
+		}
 
 		st.close();
 		con.close();
