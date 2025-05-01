@@ -5,7 +5,7 @@
 
 <div class="main">
 
-<h2 style="background-color: #DCDCDC;">学生情報変更</h2>
+<h2 style="background-color: #DCDCDC; padding:10px;">学生情報変更</h2>
 
 <form action="StudentUpdateExecute.action" method="get" class="insert">
 

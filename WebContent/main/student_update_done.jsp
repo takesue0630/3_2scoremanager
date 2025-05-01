@@ -4,7 +4,7 @@
 
 <div class="main">
 
-<h2>学生情報変更</h2>
+<h2 style="background-color: #DCDCDC; padding:10px;">学生情報変更</h2>
 
 <p>変更が完了しました</p>
 

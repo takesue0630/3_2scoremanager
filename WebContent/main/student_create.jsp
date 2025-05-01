@@ -5,7 +5,7 @@
 
 <div class="main">
 
-<h2 style="background-color: #DCDCDC;">学生情報登録</h2>
+<h2 style="background-color: #DCDCDC; padding:10px;">学生情報登録</h2>
 
 <%-- 入学年度、学生番号、氏名、クラスを入力、登録して終了ボタンを押下する --%>
 <form action="StudentCreateExecute.action" method="get" class="insert">

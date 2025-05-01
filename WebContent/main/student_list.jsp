@@ -5,7 +5,7 @@
 
 <div class="main">
 
-<h2 style="background-color: #DCDCDC;">学生管理</h2>
+<h2 style="background-color: #DCDCDC; padding:10px;">学生管理</h2>
 
 <p style="text-align: right;"><a href="StudentCreate.action">新規登録</a></p>
 
