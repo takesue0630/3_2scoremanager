@@ -20,7 +20,7 @@
 
 </form>
 
-<c:choose >
+<c:choose>
 	<c:when test="${ size>0 }">
 		<div>検索結果${ size }件</div>
 
@@ -41,12 +41,6 @@
 				<td>${ student.classNum }</td>
 				<td>${ student.no }</td>
 				<td>${ student.name }</td>
-				<td>
-					<c:choose test="">
-						
-					</c:choose>
-				</td>
-				<td></td>
 			<tr>
 		</c:forEach>
 		</tbody>
