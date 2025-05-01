@@ -7,19 +7,20 @@ import java.sql.ResultSet;
 import bean.School;
 import bean.Student;
 import bean.Subject;
+import bean.Test;
 
 //まだ未完成
 public class TestDao extends DAO{
 	private String baseSql="select * from student join school where cd=?";
 
-	public Test get(Student student,Subject subject,School school,int no) throws Exception{
+	//未完成
+	public Test get(Student student,String subject,School school,int no) throws Exception{
 		Connection con=getConnection();
 		PreparedStatement st;
 
 		st = con.prepareStatement(
 			"select * from subject where school_cd=?"
 		);
-
 		return pass;
 	}
 

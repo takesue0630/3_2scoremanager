@@ -6,13 +6,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.School;
+import bean.Student;
 import bean.Subject;
 import bean.Teacher;
+import bean.Test;
 import dao.ClassNumDao;
 import dao.SubjectDao;
 import dao.TestDao;
 import tool.Action;
 
+//未完成
 public class TestRegistAction extends Action{
 	public String execute(
 			HttpServletRequest request, HttpServletResponse response
@@ -30,8 +34,26 @@ public class TestRegistAction extends Action{
 
 		request.getRequestDispatcher("test_regist.jsp").include(request,response);
 
+
+		//検索項目の受け取り(入学年度,クラス,科目,回数)
+		//入学年度の受け取り
+		int ent_year=Integer.parseInt(request.getParameter("f1"));
+
+		//クラスの受け取り
+		String class_num=request.getParameter("f2");
+
+		//科目の受け取り
+		String subject=request.getParameter("f3");
+
+		//回数の受け取り
+		int no=Integer.parseInt(request.getParameter("f4"));
+
+
 		TestDao testdao = new TestDao();
-		List<Test> test_list = testdao.get(getstudent(), getsubject(), school, no);
+		Student student = new Student();
+		School school = new School();
+
+		Test test_list = testdao.get(student,subject,school,no);
 		return "test_regist.jsp";
 	}
 }
