@@ -45,12 +45,12 @@ public class LoginAction extends Action {
         }
         if (teacher != null) {
             session.setAttribute("teacher", teacher);
-            response.sendRedirect("menu.jsp");
+            response.sendRedirect("main/menu.jsp");
         } else {
             request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-		return "mein/menu.jsp";
+		return "main/menu.jsp";
     }
 }
 
