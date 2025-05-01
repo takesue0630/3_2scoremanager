@@ -63,6 +63,6 @@ public class LoginExecuteAction extends Action {
             request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。"); // エラーメッセージをリクエスト属性に設定
             request.getRequestDispatcher("/login.jsp").forward(request, response); // ログイン画面へフォワード (エラーメッセージを表示)
         }
-		return "menu.jsp";
+		return "main/menu.jsp";
     }
 }
