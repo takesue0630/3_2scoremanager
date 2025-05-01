@@ -50,7 +50,7 @@
 </style>
 
 <div class="login-container">
-    <form action="Login.action" method="post">
+   <form action="<%= request.getContextPath() %>/Login.action" method="post">
 
         <h2>ログイン</h2>
 
