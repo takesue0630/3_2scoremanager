@@ -14,7 +14,7 @@ import dao.TeacherDao;
 import tool.Action;
 
 public class LoginExecuteAction extends Action {
-    @Override
+	@Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
@@ -24,13 +24,11 @@ public class LoginExecuteAction extends Action {
         // 必須項目未入力チェック
         if (id == null || id.trim().isEmpty()) {
             request.setAttribute("idError", "IDを入力してください。");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
-            return null;
+            return "/login.jsp"; // フォワード先を返す
         }
         if (password == null || password.trim().isEmpty()) {
             request.setAttribute("passwordError", "パスワードを入力してください。");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
-            return null;
+            return "/login.jsp"; // フォワード先を返す
         }
 
         TeacherDao dao = new TeacherDao();
@@ -41,28 +39,26 @@ public class LoginExecuteAction extends Action {
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "データベースエラーが発生しました。");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
-            return null;
+            return "/login.jsp"; // フォワード先を返す
         } catch (NamingException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "データソースの設定エラーが発生しました。");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
-            return null;
+            return "/login.jsp"; // フォワード先を返す
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "予期せぬエラーが発生しました。");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
-            return null;
+            return "/login.jsp"; // フォワード先を返す
         }
 
         if (teacher != null) {
             // ログイン成功
-            // ...
+            session.setAttribute("userId", teacher.getId()); // 例: ユーザーIDをセッションに保存
+            // 必要に応じて他のユーザー情報をセッションに保存
+            return "main/menu.jsp"; // 遷移先のURLを返す (FrontControllerでフォワード)
         } else {
             // ログイン失敗
-            request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。"); // エラーメッセージをリクエスト属性に設定
-            request.getRequestDispatcher("/login.jsp").forward(request, response); // ログイン画面へフォワード (エラーメッセージを表示)
+            request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");
+            return "/login.jsp"; // フォワード先を返す
         }
-		return "main/menu.jsp";
-    }
+	}
 }
