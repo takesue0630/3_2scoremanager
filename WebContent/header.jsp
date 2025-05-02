@@ -56,7 +56,7 @@
     <div class="sub-menu">
 
         <span>${ teacher.name }</span>
-        <c:if test="${isAuthenticated=true}">		<!-- 認証済みの場合のみ表示 -->
+        <c:if test="${isAuthenticated=true}">	<!-- 認証済みの場合のみ表示 -->
         <a href="../logout.jsp">ログアウト</a>
         </c:if>
 
