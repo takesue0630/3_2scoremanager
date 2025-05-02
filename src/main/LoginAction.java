@@ -44,7 +44,7 @@ public class LoginAction extends Action {
             return null; // forward した時点で処理を終える
         }
         if (teacher != null) {
-        	teacher.setAuthenticated(true); // ログインしたらtrueを返す
+        	//これ不要かもなのでコメントアウトしてます。	teacher.setAuthenticated(true);
             session.setAttribute("teacher", teacher);
             response.sendRedirect("main/menu.jsp");
         } else {
