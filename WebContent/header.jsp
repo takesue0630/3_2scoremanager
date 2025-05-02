@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,9 +54,15 @@
     </div>
 
     <div class="sub-menu">
+
         <span>${ teacher.name }</span>
+		<c:if test="${isAuthenticated==false}">		<!-- 未認証の場合の表示 -->
         <a href="../login.jsp">ログイン</a>
+        </c:if>
+        <c:if test="${isAuthenticated==true}">		<!-- 認証済みの場合の表示 -->
         <a href="../logout.jsp">ログアウト</a>
+        </c:if>
+
     </div>
 </header>
 <div class="container">
