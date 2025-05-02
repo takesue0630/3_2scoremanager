@@ -60,9 +60,9 @@ public class StudentListAction extends Action {
 			list=dao.filter(school,ent_year,class_num,is_attend);
 		}
 
-//		セッションに生徒のリストとリストサイズを格納
-		session.setAttribute("list", list);
-		session.setAttribute("size", list.size());
+//		リクエスト属性に生徒のリストとリストサイズを格納
+		request.setAttribute("list", list);
+		request.setAttribute("size", list.size());
 
 
 //		カレンダーオブジェクトの生成
