@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.School;
-import bean.Student;
 import bean.Subject;
 import bean.Teacher;
 import bean.Test;
@@ -37,23 +36,31 @@ public class TestRegistAction extends Action{
 
 		//検索項目の受け取り(入学年度,クラス,科目,回数)
 		//入学年度の受け取り
-		int ent_year=Integer.parseInt(request.getParameter("f1"));
+		int entYear=Integer.parseInt(request.getParameter("f1"));
 
 		//クラスの受け取り
-		String class_num=request.getParameter("f2");
+		String classNum=request.getParameter("f2");
 
 		//科目の受け取り
 		String subject=request.getParameter("f3");
 
 		//回数の受け取り
-		int no=Integer.parseInt(request.getParameter("f4"));
+		int num=Integer.parseInt(request.getParameter("f4"));
 
 
-		TestDao testdao = new TestDao();
-		Student student = new Student();
 		School school = new School();
 
-		Test test_list = testdao.get(student,subject,school,no);
+		//入力された入学年度,クラス,科目,回数の成績データを取得
+		TestDao testdao = new TestDao();
+		List<Test> test_filter = testdao.filter(entYear, classNum, subject, num, school);
+
+		//科目名を取得
+		List<Subject> subject_filter = subjectdao.filter(school);
+
+		//セッションに格納
+		session.setAttribute("test_filter", test_filter);
+		session.setAttribute("subject_filter", subject_filter);
+
 		return "test_regist.jsp";
 	}
 }
