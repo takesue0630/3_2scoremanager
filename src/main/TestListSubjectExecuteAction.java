@@ -1,22 +1,17 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.School;
-import bean.Student;
 import bean.Teacher;
-import dao.ClassNumDao;
-import dao.StudentDao;
+import bean.Test;
+import dao.TestDao;
 import tool.Action;
 
-public class TestListSubjctExecuteAction extends Action {
+public class TestListSubjectExecuteAction extends Action {
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
@@ -27,61 +22,34 @@ public class TestListSubjctExecuteAction extends Action {
 
 //		検索項目の取得
 //		入学年度
-		int ent_year=0;
+		int ent_year=-1;
 		if (request.getParameter("f1")!=null) {
 			ent_year=Integer.parseInt(request.getParameter("f1"));
 		}
 //		クラス番号
-		String class_num="0";
-		if (request.getParameter("f2")!=null) {
-			class_num=request.getParameter("f2");
-		}
-//		在学中
-		boolean is_attend;
-		if (request.getParameter("f3")!=null) {
-			is_attend=true;
-		} else {
-			is_attend=false;
-		}
+		String class_num=request.getParameter("f2");
+//		科目
+		String subject=request.getParameter("f3");
 
-//		セッションのユーザーデータから、ユーザーが所属している学校の生徒一覧用データを取得
-		School school=teacher.getSchool();
-		StudentDao dao=new StudentDao();
-
-//		一覧用のリスト作成
-		List<Student> list;
-		if (class_num.equals("0")) {
-			if (ent_year==0) {
-				list=dao.filter(school,is_attend);
-			} else {
-				list=dao.filter(school,ent_year,is_attend);
-			}
-		} else {
-			list=dao.filter(school,ent_year,class_num,is_attend);
+//		入学年度、クラス、科目のいずれかが未入力の場合
+		if (ent_year==-1 || class_num==null || subject==null) {
+//			エラーのセット
+			request.setAttribute("error", "入学年度とクラスと科目を選択してください");
+//			成績一覧画面へ戻す
+			return "test_regist.jsp";
 		}
 
-//		セッションに生徒のリストとリストサイズを格納
-		session.setAttribute("list", list);
-		session.setAttribute("size", list.size());
+//		入学年度、クラス、科目の成績データを取得
+		TestDao test_dao=new TestDao();
+		List<Test> list=test_dao.filter(ent_year, class_num, subject, 0, teacher.getSchool());
+//		リクエスト属性に成績のリストを格納
+		request.setAttribute("list", list);
+		request.setAttribute("size", list.size());
 
-
-//		カレンダーオブジェクトの生成
-		Calendar c = Calendar.getInstance();
-//		現在年を格納
-	    c.setTime(new Date());
-//	    十年前から十年後までのリストを作成
-	    List<String> ent_year_set=new ArrayList<>();
-	    for (int i = -10; i <= 10; i++) {
-	    	ent_year_set.add(""+(c.get(Calendar.YEAR)+i)+"");
-	    }
-//	    リクエスト属性に格納
-	    request.setAttribute("ent_year_set", ent_year_set);
-
-//	    セレクトボックス用のクラスデータを取得
-		ClassNumDao cdao=new ClassNumDao();
-		List<String> class_num_set=cdao.filter(teacher.getSchool());
-//	    リクエスト属性に格納
-		request.setAttribute("class_num_set", class_num_set);
+//		入力欄用データ
+		request.setAttribute("ent_year", ent_year);
+		request.setAttribute("class_num", class_num);
+		request.setAttribute("subject", subject);
 
 		return "student_list.jsp";
 	}

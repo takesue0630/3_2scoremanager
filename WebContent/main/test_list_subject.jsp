@@ -4,54 +4,48 @@
 <%@include file="../sidebar.jsp" %>
 
 <div class="main">
+	<h2 style="background-color: #DCDCDC; padding:10px;">成績一覧（科目）</h2>
 
-<h2 style="background-color: #DCDCDC; padding:10px;">成績一覧（科目）</h2>
+	<form action="StudentList.action" method="get">
+		<div style="border:2px solid #DCDCDC; border-radius:5px; margin:10px; display:flex;">
+			<div style="width:30%; padding:10px;">
 
-<form action="StudentList.action" method="get">
+			</div>
+		</div>
+	</form>
 
-<div style="border:2px solid #DCDCDC; border-radius:5px; margin:10px; display:flex;">
+	<c:choose>
+		<c:when test="${ size>0 }">
+			<div>検索結果${ size }件</div>
 
-<div style="width:30%; padding:10px;">
+			<table style="width:100%;">
+			<thead>
+				<th style="text-align:left; width:20%;">入学年度</th>
+				<th style="text-align:left; width:15%;">クラス</th>
+				<th style="text-align:left; width:20%;">学生番号</th>
+				<th style="text-align:left; width:20%;">氏名</th>
+				<th style="text-align:left; width:10%;">1回</th>
+				<th style="text-align:left; width:10%;">2回</th>
+			</thead>
 
+			<tbody>
+			<c:forEach var="test" items="${list}">
+				<tr>
+					<td>${ test.student.entYear }</td>
+					<td>${ test.student.classNum }</td>
+					<td>${ test.student.no }</td>
+					<td>${ test.student.name }</td>
+					<td>${ test.point }</td>
+				<tr>
+			</c:forEach>
+			</tbody>
 
-</div>
-
-</div>
-
-</form>
-
-<c:choose>
-	<c:when test="${ size>0 }">
-		<div>検索結果${ size }件</div>
-
-		<table style="width:100%;">
-		<thead>
-			<th style="text-align:left; width:20%;">入学年度</th>
-			<th style="text-align:left; width:15%;">クラス</th>
-			<th style="text-align:left; width:20%;">学生番号</th>
-			<th style="text-align:left; width:20%;">氏名</th>
-			<th style="text-align:left; width:10%;">1回</th>
-			<th style="text-align:left; width:10%;">2回</th>
-		</thead>
-
-		<tbody>
-		<c:forEach var="student" items="${list}">
-			<tr>
-				<td>${ student.entYear }</td>
-				<td>${ student.classNum }</td>
-				<td>${ student.no }</td>
-				<td>${ student.name }</td>
-			<tr>
-		</c:forEach>
-		</tbody>
-
-		</table>
-	</c:when>
-	<c:otherwise>
-		<div>学生情報が存在しませんでした</div>
-	</c:otherwise>
-</c:choose>
-
+			</table>
+		</c:when>
+		<c:otherwise>
+			<div>学生情報が存在しませんでした</div>
+		</c:otherwise>
+	</c:choose>
 </div>
 
 
