@@ -25,11 +25,6 @@
         box-sizing: border-box;
     }
 
-    p {
-        text-align: left;
-        margin-bottom: 10px;
-    }
-
     input[type="checkbox"] {
         margin-right: 5px;
     }
