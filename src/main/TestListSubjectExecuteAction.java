@@ -1,14 +1,8 @@
 package main;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import bean.Teacher;
-import bean.Test;
-import dao.TestDao;
 import tool.Action;
 
 public class TestListSubjectExecuteAction extends Action {
@@ -16,6 +10,10 @@ public class TestListSubjectExecuteAction extends Action {
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
 
+        String f1 = request.getParameter("${test.student.no}");
+        System.out.println(f1);
+
+        /*
 //		セッションからユーザーデータを取得
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher)session.getAttribute("teacher");
@@ -51,6 +49,7 @@ public class TestListSubjectExecuteAction extends Action {
 		request.setAttribute("class_num", class_num);
 		request.setAttribute("subject", subject);
 
-		return "student_list.jsp";
+*/
+		return "test_regist_done.jsp";
 	}
 }
