@@ -1,4 +1,5 @@
 </div>
+</div>
 <%@page contentType="text/html; charset=UTF-8" %>
 <footer style="text-align:center;  background-color: #ccc; padding:1px;">
 

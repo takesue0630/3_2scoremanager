@@ -2,19 +2,19 @@
 <div class="sidebar">
 <nav>
 
-<ul>
+<ul style="list-style-type:none;">
 <li><a href="menu.jsp">メニュー</a></li>
-
+<br>
 <li><a href="StudentList.action">学生管理</a></li>
-
+<br>
 <li>
 成績管理
-<ul>
+<ul style="list-style-type:none; padding-left:20px;">
 
 <li><a href="TestRegist.action">成績登録</a></li>
-
+<br>
 <li><a href="main/test_list">成績参照</a></li>
-
+<br>
 </ul>
 </li>
 
@@ -23,3 +23,4 @@
 
 </nav>
 </div>
+<div class="main">
