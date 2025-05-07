@@ -62,8 +62,6 @@ public class StudentListAction extends Action {
 
 //		リクエスト属性に生徒のリストとリストサイズを格納
 		request.setAttribute("list", list);
-		request.setAttribute("size", list.size());
-
 
 //		カレンダーオブジェクトの生成
 		Calendar c = Calendar.getInstance();

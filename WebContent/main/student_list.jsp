@@ -43,8 +43,8 @@
 	</form>
 
 	<c:choose >
-		<c:when test="${ size>0 }">
-			<div>検索結果${ size }件</div>
+		<c:when test="${ list.size()>0 }">
+			<div>検索結果${ list.size() }件</div>
 
 			<table style="width:100%;">
 				<thead>
