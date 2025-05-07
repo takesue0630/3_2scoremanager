@@ -2,6 +2,7 @@
 <%@include file="../header.jsp" %>
 <%@include file="../sidebar.jsp" %>
 
+
 <div class="main">
 
 <h2>科目情報削除</h2>
