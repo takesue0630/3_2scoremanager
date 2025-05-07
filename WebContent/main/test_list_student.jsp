@@ -14,8 +14,8 @@
 	</form>
 
 	<c:choose>
-		<c:when test="${ size>0 }">
-			<div>氏名：${ size }(${ size })</div>
+		<c:when test="${ list.size()>0 }">
+			<div>氏名：${ student.name }(${ student.no })</div>
 
 			<table style="width:100%;">
 				<thead>

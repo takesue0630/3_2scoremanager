@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Student;
 import bean.Teacher;
 import bean.TestListStudent;
 import dao.StudentDao;
@@ -25,14 +26,15 @@ public class TestListStudentExecuteAction extends Action {
 
 //		学生番号に一致する学生の取得
 		StudentDao student_dao=new StudentDao();
+		Student student=student_dao.get(no);
+		request.setAttribute("student", student);
 
 //		学生の成績データを取得
 		TestListStudentDao test_list_student_dao=new TestListStudentDao();
-		List<TestListStudent> list=test_list_student_dao.filter(student_dao.get(no));
+		List<TestListStudent> list=test_list_student_dao.filter(student);
 
 //		リクエスト属性に成績のリストを格納
 		request.setAttribute("list", list);
-		request.setAttribute("size", list.size());
 
 //		入力欄用データ
 		request.setAttribute("no", no);

@@ -41,7 +41,6 @@ public class TestListSubjectExecuteAction extends Action {
 		List<TestListSubject> list=test_list_subject_dao.filter(ent_year, class_num, subject, teacher.getSchool());
 //		リクエスト属性に成績のリストを格納
 		request.setAttribute("list", list);
-		request.setAttribute("size", list.size());
 
 //		入力欄用データ
 		request.setAttribute("ent_year", ent_year);
