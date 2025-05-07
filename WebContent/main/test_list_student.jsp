@@ -4,53 +4,43 @@
 <%@include file="../sidebar.jsp" %>
 
 <div class="main">
+	<h2 style="background-color: #DCDCDC; padding:10px;">成績一覧（学生）</h2>
 
-<h2 style="background-color: #DCDCDC; padding:10px;">成績一覧（学生）</h2>
+	<form action="StudentList.action" method="get">
+		<div style="border:2px solid #DCDCDC; border-radius:5px; margin:10px; display:flex;">
+			<div style="width:30%; padding:10px;">
+			</div>
+		</div>
+	</form>
 
-<form action="StudentList.action" method="get">
+	<c:choose>
+		<c:when test="${ size>0 }">
+			<div>氏名：${ size }(${ size })</div>
 
-<div style="border:2px solid #DCDCDC; border-radius:5px; margin:10px; display:flex;">
+			<table style="width:100%;">
+				<thead>
+					<th style="text-align:left; width:50%;">科目名</th>
+					<th style="text-align:left; width:20%;">科目コード</th>
+					<th style="text-align:left; width:15%;">回数</th>
+					<th style="text-align:left; width:15%;">点数</th>
+				</thead>
 
-<div style="width:30%; padding:10px;">
-
-
+				<tbody>
+					<c:forEach var="testliststudent" items="${list}">
+						<tr>
+							<td>${ testliststudent.subjectName }</td>
+							<td>${ testliststudent.subjectCd }</td>
+							<td>${ testliststudent.num }</td>
+							<td>${ testliststudent.point }</td>
+						<tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</c:when>
+		<c:otherwise>
+			<div>成績情報が存在しませんでした</div>
+		</c:otherwise>
+	</c:choose>
 </div>
-
-</div>
-
-</form>
-
-<c:choose>
-	<c:when test="${ size>0 }">
-		<div>氏名：${ size }(${ size })</div>
-
-		<table style="width:100%;">
-		<thead>
-			<th style="text-align:left; width:50%;">科目名</th>
-			<th style="text-align:left; width:20%;">科目コード</th>
-			<th style="text-align:left; width:15%;">回数</th>
-			<th style="text-align:left; width:15%;">点数</th>
-		</thead>
-
-		<tbody>
-		<c:forEach var="student" items="${list}">
-			<tr>
-				<td>${ student.entYear }</td>
-				<td>${ student.classNum }</td>
-				<td>${ student.no }</td>
-				<td>${ student.name }</td>
-			<tr>
-		</c:forEach>
-		</tbody>
-
-		</table>
-	</c:when>
-	<c:otherwise>
-		<div>成績情報が存在しませんでした</div>
-	</c:otherwise>
-</c:choose>
-
-</div>
-
 
 <%@include file="../footer.jsp" %>
