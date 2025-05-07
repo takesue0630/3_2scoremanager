@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Teacher;
-import bean.Test;
-import dao.TestDao;
 import tool.Action;
 
 public class TestListSubjectExecuteAction extends Action {
@@ -38,9 +36,9 @@ public class TestListSubjectExecuteAction extends Action {
 			return "test_regist.jsp";
 		}
 
-//		入学年度、クラス、科目の成績データを取得
-		TestDao test_dao=new TestDao();
-		List<Test> list=test_dao.filter(ent_year, class_num, subject, 0, teacher.getSchool());
+//		入学年度、クラス、科目に一致する成績データを取得
+		TestListSubjectDao test_list_subject_dao=new TestListSubjectDao();
+		List<TestListSubject> list=test_list_subject_dao.filter(ent_year, class_num, subject, teacher.getSchool());
 //		リクエスト属性に成績のリストを格納
 		request.setAttribute("list", list);
 		request.setAttribute("size", list.size());
@@ -50,6 +48,6 @@ public class TestListSubjectExecuteAction extends Action {
 		request.setAttribute("class_num", class_num);
 		request.setAttribute("subject", subject);
 
-		return "test_regist_done.jsp";
+		return "test_list_subject.jsp";
 	}
 }

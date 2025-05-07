@@ -29,13 +29,32 @@
 			</thead>
 
 			<tbody>
-			<c:forEach var="test" items="${list}">
+			<c:forEach var="testlistsubject" items="${list}">
 				<tr>
-					<td>${ test.student.entYear }</td>
-					<td>${ test.student.classNum }</td>
-					<td>${ test.student.no }</td>
-					<td>${ test.student.name }</td>
-					<td>${ test.point }</td>
+					<td>${ testlistsubject.entYear }</td>
+					<td>${ testlistsubject.classNum }</td>
+					<td>${ testlistsubject.studentNo }</td>
+					<td>${ testlistsubject.studentName }</td>
+					<td>
+						<c:choose>
+							<c:when test="${ testlistsubject.points[1] }!=null">
+								${ testlistsubject.points[1] }
+							</c:when>
+							<c:otherwise>
+								-
+							</c:otherwise>
+						</c:choose>
+					</td>
+					<td>
+						<c:choose>
+							<c:when test="${ testlistsubject.points[2] }!=null">
+								${ testlistsubject.points[2] }
+							</c:when>
+							<c:otherwise>
+								-
+							</c:otherwise>
+						</c:choose>
+					</td>
 				<tr>
 			</c:forEach>
 			</tbody>
