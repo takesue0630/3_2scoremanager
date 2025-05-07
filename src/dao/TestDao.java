@@ -129,8 +129,144 @@ public class TestDao extends DAO{
 	    return list;
 	}
 
-	public boolean save(List<Test> list) throws Exception{
-		return pass;
+	public boolean save(List<String> list) throws Exception {
+	    // データベース接続
+	    Connection con = getConnection();
+	    PreparedStatement st = null;  // stを最初にnullで初期化
+	    boolean result = true;
+	    int listSize = list.size() / 4;
+
+	    // リストの内容を表示
+	    System.out.println("リストのサイズ: " + listSize);
+	    for (String item : list) {
+	        System.out.println(item);
+	    }
+
+	    try {
+	        for (int i = 0; i < listSize; i++) {
+	            // リストの要素を1つずつ変数に代入
+	            String studentNo = list.get(i * 4); // 1つ目の値
+	            String pointStr = list.get(i * 4 + 1); // 2つ目の値
+	            String subjectName = list.get(i * 4 + 2); // 3つ目の値
+	            String num = list.get(i * 4 + 3); // 4つ目の値
+
+	            // デバッグ出力
+	            System.out.println("学生番号: " + studentNo);
+	            System.out.println("科目名: " + subjectName);
+	            System.out.println("点数: " + pointStr);
+	            System.out.println("回数: " + num);
+
+	            // SQL文の修正　(入学年,クラス,番号学生番号,氏名にあう生徒の点数を上書きする)
+	            st = con.prepareStatement(
+	                "UPDATE test " +
+	                "SET point = ? " +
+	                "WHERE student_no = ? " +
+	                "AND no = ? " +
+	                "AND point = 100 " +//ここの点数をSQLの点数を持ってくる
+	                "AND EXISTS ( " +
+	                "SELECT 1 " +
+	                "FROM subject " +
+	                "WHERE subject.name = ? " +
+	                "AND cd = test.subject_cd )"
+	            );
+
+	            // パラメータの設定
+	            st.setInt(1, Integer.parseInt(pointStr));  // 点数を設定
+	            st.setString(2, studentNo);  // 学生番号を設定
+	            st.setString(3, num);  // 回数を設定
+	            st.setString(4, subjectName);  // 科目名を設定
+
+	            // クエリ実行
+	            st.executeUpdate();  // executeUpdateに修正
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        result = false;  // エラー時にfalseを返す
+	    } finally {
+	        if (st != null) {
+	            try {
+	                st.close();  // stを確実に閉じる
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        }
+	        if (con != null) {
+	            try {
+	                con.close();  // conを確実に閉じる
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+
+	    return result;
+	}
+
+	public boolean save1(List<String> list) throws Exception {
+	    // データベース接続
+	    Connection con = getConnection();
+	    PreparedStatement st = null;  // stを最初にnullで初期化
+	    boolean result = true;
+	    int listSize = list.size() / 4;
+
+	    // リストの内容を表示
+	    System.out.println("リストのサイズ: " + listSize);
+	    for (String item : list) {
+	        System.out.println(item);
+	    }
+
+	    try {
+	        for (int i = 0; i < listSize; i++) {
+	            // リストの要素を1つずつ変数に代入
+	            String studentNo = list.get(i * 4); // 1つ目の値
+	            String pointStr = list.get(i * 4 + 1); // 2つ目の値
+	            String subjectName = list.get(i * 4 + 2); // 3つ目の値
+	            String num = list.get(i * 4 + 3); // 4つ目の値
+	            String subject = list.get(listSize);
+
+	            // デバッグ出力
+	            System.out.println("学生番号: " + studentNo);
+	            System.out.println("科目名: " + subjectName);
+	            System.out.println("点数: " + pointStr);
+	            System.out.println("回数: " + num);
+
+	            // SQL文の修正　(入学年,クラス,番号学生番号,氏名にあう生徒の点数を上書きする)
+	            st = con.prepareStatement(
+	                "UPDATE test " +
+	                "SET point = ? " +
+	                "WHERE student_no = ? "
+	            );
+
+	            // パラメータの設定
+	            st.setInt(1, Integer.parseInt(pointStr));  // 点数を設定
+	            st.setString(2, studentNo);  // 学生番号を設定
+
+	            // クエリ実行
+	            st.executeUpdate();  // executeUpdateに修正
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        result = false;  // エラー時にfalseを返す
+	    } finally {
+	        if (st != null) {
+	            try {
+	                st.close();  // stを確実に閉じる
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        }
+	        if (con != null) {
+	            try {
+	                con.close();  // conを確実に閉じる
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+
+	    return result;
 	}
 
 	public boolean save(Test test,Connection connection) throws Exception{
