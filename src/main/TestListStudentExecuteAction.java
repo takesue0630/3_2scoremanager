@@ -17,7 +17,7 @@ public class TestListStudentExecuteAction extends Action {
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
-		//セッションからユーザーデータを取得
+//		セッションからユーザーデータを取得
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher)session.getAttribute("teacher");
 
