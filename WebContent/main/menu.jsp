@@ -21,6 +21,7 @@
         margin-top: 10px;
         margin-right: 10px;
     }
+
 </style>
 
 <h2 style="background-color:grey;">メニュー</h2>

@@ -45,6 +45,7 @@
     .sub-menu span {
         margin-right: 10px; /* 名前とログアウトの間のスペース (任意) */
     }
+
 </style>
 </head>
 <body>
