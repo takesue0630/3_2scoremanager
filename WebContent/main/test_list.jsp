@@ -3,10 +3,11 @@
 <%@include file="../header.jsp" %>
 <%@include file="../sidebar.jsp" %>
 
-<h2 style="background-color: #DCDCDC; padding:10px;">成績一覧（学生）</h2>
+<h2 style="background-color: #DCDCDC; padding:10px;">成績参照</h2>
 
-<form action="TestListSubject.action" method="get">
-	<div style="border:2px solid #DCDCDC; border-radius:5px; margin:10px; display:flex;">
+
+<div style="border:2px solid #DCDCDC; border-radius:5px; margin:10px;">
+	<form action="TestListSubjectExecute.action" method="get" style="display:flex;">
 		<div style="text-align:center; width:15%; padding:10px;">
 			<p>科目情報</p>
 		</div>
@@ -47,9 +48,30 @@
 		<div style="text-align:center; width:15%; margin:auto;">
 			<input type="submit" value="検索">
 		</div>
-	</div>
-</form>
 
-<p>科目情報を選択または学生情報を入力して検索ボタンをクリックしてください</p>
+		<div style="color:#ffd700;">${ error }</div>
+	</form>
+
+	<div style="margin:10px; border-bottom:2px solid #DCDCDC;"></div>
+
+	<form action="TestListStudentExecute.action" method="get" style="display:flex;">
+		<div style="text-align:center; width:15%; padding:10px;">
+			<p>学生情報</p>
+		</div>
+
+		<div style="width:30%; padding:10px;">
+			<label>学生番号</label>
+			<br>
+			<input type="text" required name="f4" placeholder="学生番号を入力してください" style="width:100%; height:25px;">
+		</div>
+
+		<div style="text-align:center; width:15%; margin:auto;">
+			<input type="submit" value="検索">
+		</div>
+	</form>
+</div>
+
+
+<p style="color:#00bfff;">科目情報を選択または学生情報を入力して検索ボタンをクリックしてください</p>
 
 <%@include file="../footer.jsp" %>
