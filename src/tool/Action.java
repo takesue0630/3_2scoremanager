@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public abstract class Action extends HttpServlet {
+public abstract class Action extends HttpServlet { // HttpServlet を継承
     private static final long serialVersionUID = 1L;
 
     public abstract String execute(HttpServletRequest request, HttpServletResponse response)
