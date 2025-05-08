@@ -149,12 +149,14 @@ public class TestDao extends DAO{
 	            String pointStr = list.get(i * 4 + 1); // 2つ目の値
 	            String subjectName = list.get(i * 4 + 2); // 3つ目の値
 	            String num = list.get(i * 4 + 3); // 4つ目の値
+	            String aa = list.get(list.size());
 
 	            // デバッグ出力
 	            System.out.println("学生番号: " + studentNo);
 	            System.out.println("科目名: " + subjectName);
 	            System.out.println("点数: " + pointStr);
 	            System.out.println("回数: " + num);
+	            System.out.println(aa);
 
 	            // SQL文の修正　(入学年,クラス,番号学生番号,氏名にあう生徒の点数を上書きする)
 	            st = con.prepareStatement(
@@ -162,19 +164,17 @@ public class TestDao extends DAO{
 	                "SET point = ? " +
 	                "WHERE student_no = ? " +
 	                "AND no = ? " +
-	                "AND point = 100 " +//ここの点数をSQLの点数を持ってくる
 	                "AND EXISTS ( " +
 	                "SELECT 1 " +
 	                "FROM subject " +
-	                "WHERE subject.name = ? " +
-	                "AND cd = test.subject_cd )"
-	            );
+	                "WHERE subject.cd = ? "
+	                );
 
 	            // パラメータの設定
 	            st.setInt(1, Integer.parseInt(pointStr));  // 点数を設定
 	            st.setString(2, studentNo);  // 学生番号を設定
 	            st.setString(3, num);  // 回数を設定
-	            st.setString(4, subjectName);  // 科目名を設定
+	            st.setString(4,aa);//科目コード
 
 	            // クエリ実行
 	            st.executeUpdate();  // executeUpdateに修正

@@ -24,8 +24,7 @@ public class TestRegistAction extends Action {
 
         List<String> class_num_list = classdao.filter(teacher.getSchool());
         List<Subject> subject_list = subjectdao.filter(teacher.getSchool());
-
-        request.setAttribute("class_num_list", class_num_list);
+        session.setAttribute("subject_list", subject_list);
         request.setAttribute("subject_list", subject_list);
 
 
