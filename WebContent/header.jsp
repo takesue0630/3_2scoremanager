@@ -51,7 +51,7 @@
 <body>
 <div id = "wrapper">
 <div id = "header">
-<div id = "title">得点管理</div>
+<h1>得点管理システム</h1>
 <div class="sub-menu">
 
         <span>${ teacher.name }</span>
