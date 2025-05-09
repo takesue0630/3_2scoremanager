@@ -1,5 +1,5 @@
 package main;
- 
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import bean.Teacher;
 import dao.TeacherDao;
 import tool.Action;
- 
+
 public class LoginExecuteAction extends Action {
 
 	@Override
@@ -20,11 +20,11 @@ public class LoginExecuteAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
- 
+
         String id = request.getParameter("id");
 
         String password = request.getParameter("password");
- 
+
         // 必須項目未入力チェック
 
         if (id == null || id.trim().isEmpty()) {
@@ -42,11 +42,11 @@ public class LoginExecuteAction extends Action {
             return "/login.jsp"; // フォワード先を返す
 
         }
- 
+
         TeacherDao dao = new TeacherDao();
 
         Teacher teacher = null;
- 
+
         try {
 
             teacher = dao.login(id, password);
@@ -76,7 +76,7 @@ public class LoginExecuteAction extends Action {
             return "/login.jsp"; // フォワード先を返す
 
         }
- 
+
         if (teacher != null) {
 
             // ログイン成功
@@ -100,4 +100,3 @@ public class LoginExecuteAction extends Action {
 	}
 
 }
- 

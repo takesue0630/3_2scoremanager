@@ -1,5 +1,5 @@
 package main;
- 
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import bean.Teacher;
 import dao.TeacherDao;
 import tool.Action;
- 
+
 public class LoginAction extends Action {
 
 		@Override
@@ -22,15 +22,15 @@ public class LoginAction extends Action {
 	            throws ServletException, IOException {
 
         HttpSession session = request.getSession();
- 
+
         String id = request.getParameter("id");
 
         String password = request.getParameter("password");
- 
+
         TeacherDao dao = new TeacherDao();
 
         Teacher teacher = null;
- 
+
         try {
 
             teacher = dao.login(id, password);
@@ -67,6 +67,7 @@ public class LoginAction extends Action {
 
         }
 
+
         if (teacher != null) {
 
         	//これ不要かもなのでコメントアウトしてます。	teacher.setAuthenticated(true);
@@ -88,4 +89,3 @@ public class LoginAction extends Action {
     }
 
 }
- 
