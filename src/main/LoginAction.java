@@ -69,13 +69,9 @@ public class LoginAction extends Action {
 
 
         if (teacher != null) {
-
-        	//これ不要かもなのでコメントアウトしてます。	teacher.setAuthenticated(true);
-
             session.setAttribute("teacher", teacher);
-
+            session.setAttribute("teacherName", teacher.getName()); // ユーザー名をセッションに保存
             response.sendRedirect("main/menu.jsp");
-
         } else {
 
             request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");
