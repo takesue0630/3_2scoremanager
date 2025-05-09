@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,33 +6,46 @@
 <meta charset = 'UTF-8'>
 <title>得点管理</title>
 <style>
-				* { margin: 0; padding: 0; }
-				#wrapper { height: 100%; width: 100%; }
-				#header {
-					height: 20%;
-					width: 100%;
-					background-color: lightsteelblue;
-					display: inline-block;
-				}
-				#title { padding: 1rem 3rem; font-size: xx-large; display: inline-block; }
-				#subInfo {
-					display: inline-block;
-					float : right;
-					width: 15%;
-					font-size: x-small;
-					background-color: lemonchiffon;
-					margin-right: .5rem;
-				}
-				#subleft { display: inline-block; }
-				#subright{ display: inline-block; float: right; }
-				#main { margin: 3rem; }
-				#footer {
-					display: inline-block;
-					width: 100%;
-					padding: 1rem 0;
-					background-color: whitesmoke;
-					text-align: center;
-				}
+    .container {
+        display: flex; /* フレックスボックスを使用 */
+        width: 100%;
+        height: 100%;
+        margin: 0 auto; /* 中央に配置 */
+    }
+
+    .sidebar {
+        flex: 25; /* 全体の25%の大きさにする */
+        padding: 20px;
+        border-right: solid 2px #DCDCDC;
+    }
+
+    .main {
+        flex: 75; /* 全体の75%の大きさにする */
+        padding: 20px;
+    }
+
+    /* ヘッダーのスタイル */
+    header {
+        display: flex; /* ヘッダーをフレックスコンテナにする */
+        justify-content: space-between; /* 子要素を左右に配置し、間にスペースを空ける */
+        align-items: center; /* 子要素を垂直方向の中央に配置 */
+        padding: 10px 20px; /* ヘッダーにpaddingを追加 */
+        background-color: #f8f9fa; /* ヘッダーの背景色 (任意) */
+        border-bottom: 1px solid #dee2e6; /* ヘッダーの下線 (任意) */
+    }
+
+    .title h1 {
+        margin: 0; /* タイトルのmarginを削除 */
+    }
+
+    .sub-menu {
+        /* 特に変更なし。必要に応じてスタイルを調整 */
+    }
+
+    .sub-menu span {
+        margin-right: 10px; /* 名前とログアウトの間のスペース (任意) */
+    }
+
 </style>
 </head>
 <body>
