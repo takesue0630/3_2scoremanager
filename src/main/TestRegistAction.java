@@ -36,6 +36,12 @@ public class TestRegistAction extends Action {
         String f3 = request.getParameter("f3");
         String f4 = request.getParameter("f4");
 
+        request.setAttribute("selectedF1", f1);
+        request.setAttribute("selectedF2", f2);
+        request.setAttribute("selectedF3", f3);
+        request.setAttribute("selectedF4", f4);
+
+
         System.out.println("=== TestRegistAction に到達 ===");
         System.out.println("f1: " + f1);
         System.out.println("f2: " + f2);
