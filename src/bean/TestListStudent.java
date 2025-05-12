@@ -4,28 +4,11 @@ import java.io.Serializable;
 
 public class TestListStudent implements Serializable {
 
-
-
     private String subjectName;
-
-
-    private String subjectcd;
-
-
+    private String subjectCd;
     private int num;
-
-
     private int point;
-
     public TestListStudent() {}
-
-    public TestListStudent(String subjectName, String subjectcd, int num, Integer point) {
-        this.subjectName = subjectName;
-        this.subjectcd = subjectcd;
-        this.num = num;
-        this.point = point;
-    }
-
 
     public String getSubjectName() {
         return subjectName;
@@ -35,27 +18,27 @@ public class TestListStudent implements Serializable {
         this.subjectName = subjectName;
     }
 
-    public String getSubjectcd() {
-        return subjectcd;
+    public String getSubjectCd() {
+        return subjectCd;
     }
 
-    public void setSubjectcd(String subjectcd) {
-        this.subjectcd = subjectcd;
+    public void setSubjectCd(String subjectcd) {
+        this.subjectCd = subjectcd;
     }
 
-    public int getnum() {
+    public int getNum() {
         return num;
     }
 
-    public void setnum(int num) {
+    public void setNum(int num) {
         this.num = num;
     }
 
-    public Integer getpoint() {
+    public Integer getPoint() {
         return point;
     }
 
-    public void setpoint(Integer point) {
+    public void setPoint(Integer point) {
         this.point = point;
     }
 
