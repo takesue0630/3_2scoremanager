@@ -48,9 +48,9 @@
 		<div style="text-align:center; width:15%; margin:auto;">
 			<input type="submit" value="検索">
 		</div>
-
-		<div style="color:#ffd700;">${ error }</div>
 	</form>
+
+	<div style="color:#ffd700; margin-left:40px;">${ error }</div>
 
 	<div style="margin:10px; border-bottom:2px solid #DCDCDC;"></div>
 
