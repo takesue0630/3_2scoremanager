@@ -23,6 +23,7 @@ public class TestListStudentExecuteAction extends Action {
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
+		try {
 //			セッションからユーザーデータを取得
 			HttpSession session=request.getSession();
 			Teacher teacher=(Teacher)session.getAttribute("teacher");
@@ -71,5 +72,8 @@ public class TestListStudentExecuteAction extends Action {
 
 			return "test_list_student.jsp";
 
+		} catch(Exception e) {
+			return "../error.jsp";
+		}
 	}
 }
