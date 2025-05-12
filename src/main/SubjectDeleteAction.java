@@ -1,12 +1,9 @@
 package main;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.School;
 import bean.Subject;
 import bean.Teacher;
 import dao.SubjectDao;
@@ -20,16 +17,17 @@ public class SubjectDeleteAction extends Action {
 //		セッションからユーザーデータを取得
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher)session.getAttribute("teacher");
+//
+		String no= request.getParameter("no");
 
 //		セッションのユーザーデータから、ユーザーが所属している学校の科目一覧用データを取得
-		School school=teacher.getSchool();
+
 		SubjectDao dao=new SubjectDao();
+		Subject subject=dao.get(no,teacher.getSchool());
 
-//		一覧用のリスト作成
-		List<Subject> list=dao.filter(school);
-
-//		セッションに科目のリストを格納
-		session.setAttribute("list", list);
+		Subject p=new Subject();
+		p.setCd(no);
+		p.setSchool(teacher.getSchool());
 
 
 		return "subject_delete.jsp";
