@@ -15,7 +15,7 @@
 
 <c:choose>
 	<c:when test="${ list.size()>0 }">
-		<div>科目：${ subject }</div>
+		<div>科目：${ subject.name }</div>
 
 		<table style="width:100%;">
 		<thead>

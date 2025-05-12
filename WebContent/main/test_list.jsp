@@ -40,7 +40,7 @@
 			<select name="f3" style="width:100%; height:30px;">
 				<option value="0">--------</option>
 				<c:forEach var="subject" items="${ subject_set }">
-					<option value="${ subject.name }">${ subject.name }</option>
+					<option value="${ subject.cd }">${ subject.name }</option>
 				</c:forEach>
 			</select>
 		</div>

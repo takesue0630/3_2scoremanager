@@ -6,7 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Subject;
 import bean.Teacher;
+import bean.TestListSubject;
+import dao.SubjectDao;
+import dao.TestListSubjectDao;
 import tool.Action;
 
 public class TestListSubjectExecuteAction extends Action {
@@ -23,14 +27,16 @@ public class TestListSubjectExecuteAction extends Action {
 //		クラス番号
 		String class_num=request.getParameter("f2");
 //		科目
-		String subject=request.getParameter("f3");
+		SubjectDao subject_dao=new SubjectDao();
+		Subject subject=subject_dao.get(request.getParameter("f3"), teacher.getSchool());
+		System.out.println(subject.getName());
 
 //		入学年度、クラス、科目のいずれかが未入力の場合
-		if (ent_year==0 || class_num=="0" || subject=="0") {
+		if (ent_year==0 || class_num=="0" || subject.getCd()=="0") {
 //			エラーのセット
 			request.setAttribute("error", "入学年度とクラスと科目を選択してください");
 //			成績一覧画面へ戻す
-			return "test_regist.jsp";
+			return "test_list.jsp";
 		}
 
 //		入学年度、クラス、科目に一致する成績データを取得

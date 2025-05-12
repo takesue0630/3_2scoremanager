@@ -23,7 +23,7 @@ public class TestListSubject implements Serializable {
         return studentNo;
     }
 
-    public void setSubjectcd(String studentNo) {
+    public void setStudentNo(String studentNo) {
         this.studentNo = studentNo;
     }
 
