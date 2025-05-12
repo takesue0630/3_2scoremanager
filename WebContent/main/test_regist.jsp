@@ -76,9 +76,10 @@
   }
 
   .error-message {
-    color: red;
+    color: #FFD700;
     font-size: 12px;
     margin-top: 4px;
+
   }
 </style>
 
@@ -93,9 +94,27 @@
           <label for="f1">入学年度</label>
           <select name="f1" id="f1">
             <option value="">--------</option>
+            <option value="2015" <%= "2015".equals(selectedF1) ? "selected" : "" %>>2015</option>
+            <option value="2016" <%= "2016".equals(selectedF1) ? "selected" : "" %>>2016</option>
+            <option value="2017" <%= "2017".equals(selectedF1) ? "selected" : "" %>>2017</option>
+            <option value="2018" <%= "2018".equals(selectedF1) ? "selected" : "" %>>2018</option>
+            <option value="2019" <%= "2019".equals(selectedF1) ? "selected" : "" %>>2019</option>
+            <option value="2020" <%= "2020".equals(selectedF1) ? "selected" : "" %>>2020</option>
             <option value="2021" <%= "2021".equals(selectedF1) ? "selected" : "" %>>2021</option>
+            <option value="2022" <%= "2022".equals(selectedF1) ? "selected" : "" %>>2022</option>
+            <option value="2023" <%= "2023".equals(selectedF1) ? "selected" : "" %>>2023</option>
             <option value="2024" <%= "2024".equals(selectedF1) ? "selected" : "" %>>2024</option>
             <option value="2025" <%= "2025".equals(selectedF1) ? "selected" : "" %>>2025</option>
+            <option value="2026" <%= "2026".equals(selectedF1) ? "selected" : "" %>>2026</option>
+            <option value="2027" <%= "2027".equals(selectedF1) ? "selected" : "" %>>2027</option>
+            <option value="2028" <%= "2028".equals(selectedF1) ? "selected" : "" %>>2028</option>
+            <option value="2029" <%= "2029".equals(selectedF1) ? "selected" : "" %>>2029</option>
+            <option value="2030" <%= "2030".equals(selectedF1) ? "selected" : "" %>>2030</option>
+            <option value="2031" <%= "2031".equals(selectedF1) ? "selected" : "" %>>2031</option>
+            <option value="2032" <%= "2032".equals(selectedF1) ? "selected" : "" %>>2032</option>
+            <option value="2033" <%= "2033".equals(selectedF1) ? "selected" : "" %>>2033</option>
+            <option value="2034" <%= "2034".equals(selectedF1) ? "selected" : "" %>>2034</option>
+            <option value="2035" <%= "2035".equals(selectedF1) ? "selected" : "" %>>2035</option>
           </select>
         </div>
 
@@ -104,7 +123,11 @@
           <select name="f2" id="f2">
             <option value="">--------</option>
             <option value="101" <%= "101".equals(selectedF2) ? "selected" : "" %>>101</option>
+            <option value="102" <%= "102".equals(selectedF2) ? "selected" : "" %>>102</option>
+            <option value="103" <%= "103".equals(selectedF2) ? "selected" : "" %>>103</option>
+            <option value="104" <%= "104".equals(selectedF2) ? "selected" : "" %>>104</option>
             <option value="131" <%= "131".equals(selectedF2) ? "selected" : "" %>>131</option>
+            <option value="132" <%= "132".equals(selectedF2) ? "selected" : "" %>>132</option>
             <option value="201" <%= "201".equals(selectedF2) ? "selected" : "" %>>201</option>
             <option value="202" <%= "202".equals(selectedF2) ? "selected" : "" %>>202</option>
           </select>
@@ -115,9 +138,12 @@
           <select name="f3" id="f3">
             <option value="">--------</option>
             <option value="国語" <%= "国語".equals(selectedF3) ? "selected" : "" %>>国語</option>
-            <option value="english" <%= "english".equals(selectedF3) ? "selected" : "" %>>英語</option>
-            <option value="science" <%= "science".equals(selectedF3) ? "selected" : "" %>>理科</option>
-            <option value="social" <%= "social".equals(selectedF3) ? "selected" : "" %>>社会</option>
+            <option value="英語" <%= "英語".equals(selectedF3) ? "selected" : "" %>>英語</option>
+            <option value="理科" <%= "理科".equals(selectedF3) ? "selected" : "" %>>理科</option>
+            <option value="社会" <%= "社会".equals(selectedF3) ? "selected" : "" %>>社会</option>
+			<option value="Python1" <%= "Python1".equals(selectedF3) ? "selected" : "" %>>Python1</option>
+			<option value="Python2" <%= "Python2".equals(selectedF3) ? "selected" : "" %>>Python2</option>
+			<option value="Java" <%= "Java".equals(selectedF3) ? "selected" : "" %>>Java</option>
           </select>
         </div>
 
@@ -232,5 +258,4 @@
     </form>
   </div>
 </div>
-
 <%@ include file="../footer.jsp" %>

@@ -72,6 +72,7 @@ public class TestRegistAction extends Action {
                 }
 
                 request.setAttribute("test_filter", test_filter); // セッションではなくリクエストに変更
+                session.setAttribute("test_filter", test_filter);
 
             } catch (NumberFormatException e) {
                 e.printStackTrace();
