@@ -8,7 +8,6 @@ public class TestListStudent implements Serializable {
     private String subjectCd;
     private int num;
     private int point;
-    public TestListStudent() {}
 
     public String getSubjectName() {
         return subjectName;
