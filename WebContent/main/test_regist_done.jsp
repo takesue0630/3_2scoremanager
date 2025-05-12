@@ -5,7 +5,8 @@
 
 <div class = "main">
 <h2 style="background-color: #DCDCDC; padding:10px;">成績管理</h2>
-登録が完了しました。
+登録が完了しました。<br>
+<a href="StudentList.action">戻る</a>
 </div>
 
 <%@include file="../footer.jsp" %>

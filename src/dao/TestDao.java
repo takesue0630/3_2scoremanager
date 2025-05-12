@@ -200,6 +200,26 @@ public class TestDao extends DAO{
 	    return result;
 	}
 
+	public boolean delete(String studentNo) throws Exception {
+	    Connection con = getConnection();
+	    PreparedStatement st = null;
+	    boolean result = false;
+
+	    try {
+	        st = con.prepareStatement(
+	            "DELETE FROM test WHERE student_no = ?"
+	        );
+	        st.setString(1, studentNo);
+	        int rowsAffected = st.executeUpdate();
+	        result = (rowsAffected > 0);
+	    } finally {
+	        if (st != null) st.close();
+	        con.close();
+	    }
+
+	    return result;
+	}
+
 	public boolean save(Test test,Connection connection) throws Exception{
 		return pass;
 	}

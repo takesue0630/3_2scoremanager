@@ -184,7 +184,12 @@
           subjectDisplay = "科目：" + selectedF3 + "（" + selectedF4 + "回）";
         }
       %>
-<p><%= subjectDisplay %></p>
+    <div class="form-group" style="margin-top: 16px;">
+      <label style="font-weight: bold; font-size: 14px;">選択中の科目・回数</label>
+     <div style="padding: 8px 0; font-size: 14px;">
+      <%= subjectDisplay %>
+     </div>
+    </div>
 
 <% if (selectedF1 != null && selectedF2 != null && selectedF3 != null && selectedF4 != null
        && !selectedF1.isEmpty() && !selectedF2.isEmpty() && !selectedF3.isEmpty() && !selectedF4.isEmpty()) { %>

@@ -18,7 +18,8 @@ public class TestRegistExecuteAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String studentCountStr = request.getParameter("studentCount");
-        List<String> list = new ArrayList<>();
+        List<String> saveList = new ArrayList<>();
+        List<String> deleteList = new ArrayList<>();
         Map<String, String> errorMap = new HashMap<>();
 
         // 検索条件
@@ -65,10 +66,9 @@ public class TestRegistExecuteAction extends Action {
                 String studentNo = request.getParameter("studentNo_" + i);
                 String pointStr = request.getParameter("point_" + i);
 
-                // バリデーション：空、数値でない、範囲外
-                if (pointStr == null || pointStr.isEmpty()) {
-                    errorMap.put("point_" + i, "点数を入力してください");
-                    hasError = true;
+                if (pointStr == null || pointStr.trim().isEmpty()) {
+                    // 空欄 → 削除対象
+                    deleteList.add(studentNo);
                 } else {
                     try {
                         int point = Integer.parseInt(pointStr);
@@ -76,9 +76,10 @@ public class TestRegistExecuteAction extends Action {
                             errorMap.put("point_" + i, "0～100の範囲で入力してください");
                             hasError = true;
                         } else {
-                            list.add(studentNo);
-                            list.add(pointStr);
-                            list.add(subjectNum);
+                            // 保存対象
+                            saveList.add(studentNo);
+                            saveList.add(pointStr);
+                            saveList.add(subjectNum);
                         }
                     } catch (NumberFormatException e) {
                         errorMap.put("point_" + i, "数値を入力してください");
@@ -87,19 +88,23 @@ public class TestRegistExecuteAction extends Action {
                 }
             }
 
-            list.add(subjectCd);
-
             if (hasError) {
-                // エラーがある場合は、検索条件とエラー情報を再表示に渡す
                 request.setAttribute("errorMap", errorMap);
                 request.setAttribute("test_filter", session.getAttribute("test_filter"));
                 request.setAttribute("studentCount", studentCountStr);
                 return "test_regist.jsp";
             }
 
-            // 成績登録
             TestDao testdao = new TestDao();
-            testdao.save(list);
+
+            if (!saveList.isEmpty()) {
+                saveList.add(subjectCd);
+                testdao.save(saveList);
+            }
+
+            for (String studentNo : deleteList) {
+                testdao.delete(studentNo);  // ← 修正ポイント
+            }
         }
 
         return "test_regist_done.jsp";
