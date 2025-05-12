@@ -14,44 +14,74 @@ import dao.TeacherDao;
 import tool.Action;
 
 public class LoginAction extends Action {
+
 		@Override
+
 	    public String execute(HttpServletRequest request, HttpServletResponse response)
+
 	            throws ServletException, IOException {
+
         HttpSession session = request.getSession();
 
         String id = request.getParameter("id");
+
         String password = request.getParameter("password");
 
         TeacherDao dao = new TeacherDao();
+
         Teacher teacher = null;
 
         try {
+
             teacher = dao.login(id, password);
+
         } catch (SQLException e) {
+
             e.printStackTrace();
+
             request.setAttribute("errorMessage", "データベースエラーが発生しました。");
+
             request.getRequestDispatcher("login.jsp").forward(request, response);
+
             return null; // forward した時点で処理を終える
+
         } catch (NamingException e) {
+
             e.printStackTrace();
+
             request.setAttribute("errorMessage", "データソースの設定エラーが発生しました。");
+
             request.getRequestDispatcher("login.jsp").forward(request, response);
+
             return null; // forward した時点で処理を終える
+
         } catch (Exception e) {
+
             e.printStackTrace();
+
             request.setAttribute("errorMessage", "予期せぬエラーが発生しました。");
+
             request.getRequestDispatcher("login.jsp").forward(request, response);
+
             return null; // forward した時点で処理を終える
+
         }
+
+
         if (teacher != null) {
-        	//これ不要かもなのでコメントアウトしてます。	teacher.setAuthenticated(true);
             session.setAttribute("teacher", teacher);
+            session.setAttribute("teacherName", teacher.getName()); // ユーザー名をセッションに保存
             response.sendRedirect("main/menu.jsp");
         } else {
-            request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-		return "main/menu.jsp";
-    }
-}
 
+            request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");
+
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+
+        }
+
+		return "main/menu.jsp";
+
+    }
+
+}

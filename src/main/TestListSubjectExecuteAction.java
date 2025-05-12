@@ -13,23 +13,20 @@ public class TestListSubjectExecuteAction extends Action {
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
-		//セッションからユーザーデータを取得
+//		セッションからユーザーデータを取得
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher)session.getAttribute("teacher");
 
 //		検索項目の取得
 //		入学年度
-		int ent_year=-1;
-		if (request.getParameter("f1")!=null) {
-			ent_year=Integer.parseInt(request.getParameter("f1"));
-		}
+		int ent_year=Integer.parseInt(request.getParameter("f1"));
 //		クラス番号
 		String class_num=request.getParameter("f2");
 //		科目
 		String subject=request.getParameter("f3");
 
 //		入学年度、クラス、科目のいずれかが未入力の場合
-		if (ent_year==-1 || class_num==null || subject==null) {
+		if (ent_year==0 || class_num=="0" || subject=="0") {
 //			エラーのセット
 			request.setAttribute("error", "入学年度とクラスと科目を選択してください");
 //			成績一覧画面へ戻す

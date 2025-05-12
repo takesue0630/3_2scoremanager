@@ -1,10 +1,10 @@
-<%@page contentType="text/html; charset=UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>得点管理システム</title>
+<meta charset = 'UTF-8'>
+<title>得点管理</title>
 <style>
     .container {
         display: flex; /* フレックスボックスを使用 */
@@ -49,19 +49,16 @@
 </style>
 </head>
 <body>
-<header>
-    <div class="title">
-        <h1>得点管理システム</h1>
-    </div>
-
-    <div class="sub-menu">
+<div id = "wrapper">
+<div id = "header">
+<h1>得点管理システム</h1>
+<div class="sub-menu">
 
         <span>${ teacher.name }</span>
-        <c:if test="${teacher != null && teacher.authenticated}">
-  		  <a href="../logout.jsp">ログアウト</a>
-		</c:if>
+<c:if test="${teacher != null && teacher.authenticated}">
+<a href="../logout.jsp">ログアウト</a>
+</c:if>
 
 
     </div>
-</header>
-<div class="container">
+<div id = "main">
