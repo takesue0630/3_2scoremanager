@@ -6,7 +6,7 @@
 <meta charset = 'UTF-8'>
 <title>得点管理</title>
 <style>
-    .container {
+    #container {
         display: flex; /* フレックスボックスを使用 */
         width: 100%;
         height: 100%;
@@ -61,4 +61,4 @@
 
 
     </div>
-<div id = "main">
+<div id = "container">
