@@ -40,7 +40,7 @@
 			<select name="f3" style="width:100%; height:30px;">
 				<option value="0">--------</option>
 				<c:forEach var="subject" items="${ subject_set }">
-					<option value="${ subject.name }">${ subject.name }</option>
+					<option value="${ subject.cd }">${ subject.name }</option>
 				</c:forEach>
 			</select>
 		</div>
@@ -48,9 +48,9 @@
 		<div style="text-align:center; width:15%; margin:auto;">
 			<input type="submit" value="検索">
 		</div>
-
-		<div style="color:#ffd700;">${ error }</div>
 	</form>
+
+	<div style="color:#ffd700; margin-left:40px;">${ error }</div>
 
 	<div style="margin:10px; border-bottom:2px solid #DCDCDC;"></div>
 

@@ -39,8 +39,13 @@ public class Subject implements Serializable {
         return school;
     }
 
-    public void setShool(School school) {
+    public void setSchool(School school) {
         this.school = school;
     }
 
+    @Override
+    public String toString() {
+        return "Subject{cd='" + cd + "', name='" + name + "', school=" + (school != null ? school.getCd() : "null") + "}";
+    }
 }
+

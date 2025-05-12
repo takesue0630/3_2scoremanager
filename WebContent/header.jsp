@@ -1,12 +1,12 @@
-<%@page contentType="text/html; charset=UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>得点管理システム</title>
+<meta charset = 'UTF-8'>
+<title>得点管理</title>
 <style>
-    .container {
+    #container {
         display: flex; /* フレックスボックスを使用 */
         width: 100%;
         height: 100%;
@@ -49,20 +49,24 @@
 </style>
 </head>
 <body>
-<header>
-    <div class="title">
-        <h1>得点管理システム</h1>
-    </div>
+<div id = "wrapper">
+<div id = "header">
+<h1>得点管理システム</h1>
+<div class="sub-menu">
 
-    <div class="sub-menu">
-
+<<<<<<< HEAD
 
         <c:if test="${ teacher != null}">
           <span>${ user.name }</span>
   		  <a href="../logout.jsp">ログアウト</a>
 		</c:if>
+=======
+        <span>${ teacher.name }</span>
+<c:if test="${teacher != null && teacher.authenticated}">
+<a href="../logout.jsp">ログアウト</a>
+</c:if>
+>>>>>>> branch 'master' of https://github.com/takesue0630/3_2scoremanager.git
 
 
     </div>
-</header>
-<div class="container">
+<div id = "container">

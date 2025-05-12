@@ -5,56 +5,83 @@ import java.sql.SQLException;
 
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Teacher;
 import dao.TeacherDao;
+import tool.Action;
 
-public class LoginAction extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+public class LoginAction extends Action {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+		@Override
+
+	    public String execute(HttpServletRequest request, HttpServletResponse response)
+
+	            throws ServletException, IOException {
+
         HttpSession session = request.getSession();
 
         String id = request.getParameter("id");
+
         String password = request.getParameter("password");
 
         TeacherDao dao = new TeacherDao();
+
         Teacher teacher = null;
 
         try {
+
             teacher = dao.login(id, password);
+
         } catch (SQLException e) {
+
             e.printStackTrace();
+
             request.setAttribute("errorMessage", "データベースエラーが発生しました。");
+
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
+
+            return null; // forward した時点で処理を終える
+
         } catch (NamingException e) {
+
             e.printStackTrace();
+
             request.setAttribute("errorMessage", "データソースの設定エラーが発生しました。");
+
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
+
+            return null; // forward した時点で処理を終える
+
         } catch (Exception e) {
+
             e.printStackTrace();
+
             request.setAttribute("errorMessage", "予期せぬエラーが発生しました。");
+
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
+
+            return null; // forward した時点で処理を終える
+
         }
+
+
         if (teacher != null) {
             session.setAttribute("teacher", teacher);
+            session.setAttribute("teacherName", teacher.getName()); // ユーザー名をセッションに保存
             response.sendRedirect("main/menu.jsp");
         } else {
+
             request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");
+
             request.getRequestDispatcher("login.jsp").forward(request, response);
+
         }
+
+		return "main/menu.jsp";
+
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doPost(request, response);
-    }
 }

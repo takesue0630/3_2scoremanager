@@ -23,9 +23,8 @@ public class SubjectDao extends DAO{
 		Subject s=new Subject();
 		if (rs.next()) {
 			s.setCd(rs.getString("cd"));
-			School sc=new School();
-			sc.setCd(rs.getString("cd"));
-			sc.setName(rs.getString("name"));
+			s.setName(rs.getString("name"));
+			s.setSchool(school);
 		}
 
 		st.close();
@@ -35,22 +34,24 @@ public class SubjectDao extends DAO{
 	}
 
 	//まだ未完成
-	public List<Subject> filter(School school)throws Exception{
+	public List<Subject> filter1(School school)throws Exception{
 		Connection con=getConnection();
 		PreparedStatement st;
 
 		st = con.prepareStatement(
-			"select * from subject where school_cd=?"
+			"SELECT * FROM SUBJECT  where school_cd = ?"
 		);
 		st.setString(1, school.getCd());
 		ResultSet rs=st.executeQuery();
+
+		System.out.println(rs+"--------");
 
 		List<Subject> list=new ArrayList<Subject>();
 		while (rs.next()) {
 			Subject s=new Subject();
 			s.setCd(rs.getString("cd"));
 			s.setName(rs.getString("name"));
-			s.setShool(school);
+			s.setSchool(school);
 			list.add(s);
 		}
 
@@ -59,6 +60,71 @@ public class SubjectDao extends DAO{
 
 		return list;
 	}
+
+	public List<Subject> filter(School school) throws Exception {
+	    List<Subject> list = new ArrayList<>();
+	    Connection con = null;
+	    PreparedStatement st = null;
+	    ResultSet rs = null;
+
+	    try {
+	        con = getConnection();
+	        st = con.prepareStatement(
+	            "SELECT * FROM SUBJECT WHERE school_cd = ?"
+	        );
+	        st.setString(1, school.getCd());
+	        rs = st.executeQuery();
+
+	        while (rs.next()) {
+	            Subject subject = new Subject();
+	            subject.setCd(rs.getString("cd"));
+	            subject.setName(rs.getString("name"));
+	            subject.setSchool(school); // ← typo 修正
+	            list.add(subject);
+	        }
+
+	    } finally {
+	        if (rs != null) rs.close();
+	        if (st != null) st.close();
+	        if (con != null) con.close();
+	    }
+
+	    return list;
+	}
+/*
+	public List<Subject> get(School school) throws Exception {
+	    List<Subject> list = new ArrayList<>();
+	    Connection con = null;
+	    PreparedStatement st = null;
+	    ResultSet rs = null;
+
+	    try {
+	        con = getConnection();
+	        st = con.prepareStatement(
+	            "select cd from subject where school_cd = ?  and cd = ? "
+	        );
+	        st.setString(1, school.getCd());
+	        rs = st.executeQuery();
+
+	        while (rs.next()) {
+	            Subject subject = new Subject();
+	            subject.setCd(rs.getString("cd"));
+	            subject.setName(rs.getString("name"));
+	            subject.setSchool(school); // ← typo 修正
+	            list.add(subject);
+	        }
+
+	    } finally {
+	        if (rs != null) rs.close();
+	        if (st != null) st.close();
+	        if (con != null) con.close();
+	    }
+
+	    return list;
+	}
+	*/
+
+
 
 	public boolean save(Subject subject) throws Exception {
 		Connection con=getConnection();

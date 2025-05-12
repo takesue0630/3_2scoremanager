@@ -13,7 +13,7 @@
 
 <li><a href="TestRegist.action">成績登録</a></li>
 <br>
-<li><a href="main/test_list">成績参照</a></li>
+<li><a href="TestList.action">成績参照</a></li>
 <br>
 </ul>
 </li>
