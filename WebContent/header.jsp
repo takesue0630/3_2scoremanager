@@ -54,18 +54,12 @@
 <h1>得点管理システム</h1>
 <div class="sub-menu">
 
-<<<<<<< HEAD
 
-        <c:if test="${ teacher != null}">
-          <span>${ user.name }</span>
-  		  <a href="../logout.jsp">ログアウト</a>
-		</c:if>
-=======
         <span>${ teacher.name }</span>
 <c:if test="${teacher != null && teacher.authenticated}">
 <a href="../logout.jsp">ログアウト</a>
 </c:if>
->>>>>>> branch 'master' of https://github.com/takesue0630/3_2scoremanager.git
+
 
 
     </div>
