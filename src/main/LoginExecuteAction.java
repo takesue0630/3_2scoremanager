@@ -1,10 +1,8 @@
 package main;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.naming.NamingException;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,7 +13,7 @@ import tool.Action;
 
 public class LoginExecuteAction extends Action {
 	@Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception{
         HttpSession session = request.getSession();
 
         String id = request.getParameter("id");
@@ -32,7 +30,8 @@ public class LoginExecuteAction extends Action {
         }
 
         TeacherDao dao = new TeacherDao();
-        Teacher teacher = null;
+        Teacher teacher = dao.get(id);
+
 
         try {
             teacher = dao.login(id, password);
@@ -54,7 +53,9 @@ public class LoginExecuteAction extends Action {
             // ログイン成功
             session.setAttribute("userId", teacher.getId()); // 例: ユーザーIDをセッションに保存
             // 必要に応じて他のユーザー情報をセッションに保存
+            System.out.println(teacher.getId());
             return "main/menu.jsp"; // 遷移先のURLを返す (FrontControllerでフォワード)
+
         } else {
             // ログイン失敗
             request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");

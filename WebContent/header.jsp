@@ -56,8 +56,9 @@
 
     <div class="sub-menu">
 
-        <span>${ teacher.name }</span>
-        <c:if test="${teacher != null && teacher.authenticated}">
+
+        <c:if test="${ teacher != null}">
+          <span>${ user.name }</span>
   		  <a href="../logout.jsp">ログアウト</a>
 		</c:if>
 
