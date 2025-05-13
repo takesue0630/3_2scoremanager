@@ -4,7 +4,7 @@
 
 <h2 style="background-color: #DCDCDC; padding:10px;">学生情報変更</h2>
 
-<p>変更が完了しました</p>
+<p style="text-align:center; background-color: #20b2aa;">変更が完了しました</p>
 
 <a href="StudentList.action">学生一覧</a>
 

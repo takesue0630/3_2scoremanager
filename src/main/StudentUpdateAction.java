@@ -27,7 +27,10 @@ public class StudentUpdateAction extends Action {
 		ClassNumDao dao=new ClassNumDao();
 		List<String> class_num=dao.filter(teacher.getSchool());
 
-		request.setAttribute("student", student);
+		request.setAttribute("ent_year", student.getEntYear());
+		request.setAttribute("no", student.getNo());
+		request.setAttribute("name", student.getName());
+		request.setAttribute("is_attend", student.getIsAttend());
 		request.setAttribute("class_num", class_num);
 
 		return "student_update.jsp";

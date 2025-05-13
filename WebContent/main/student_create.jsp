@@ -20,14 +20,14 @@
 
 	<div style="margin-top:10px; margin-bottom:10px;">
 		<label>学生番号</label>
-		<input type="text" name="no" maxlength="10" placeholder="学生番号を入力してください" required style="width:100%; padding:10px; margin-top:10px; margin-bottom:10px;">
+		<input type="text" name="no" maxlength="10" placeholder="学生番号を入力してください" value="${ no }" required style="width:100%; padding:10px; margin-top:10px; margin-bottom:10px;">
 		<div style="color:#ffd700;">${error2}</div>
 	</div>
 
 	<div style="margin-top:10px; margin-bottom:10px;">
 		<label>氏名</label>
 		<br>
-		<input type="text" name="name" maxlength="30" placeholder="氏名を入力してください" required style="width:100%; padding:10px; margin-top:10px; margin-bottom:10px;">
+		<input type="text" name="name" maxlength="30" placeholder="氏名を入力してください" value="${ name }" required style="width:100%; padding:10px; margin-top:10px; margin-bottom:10px;">
 	</div>
 
 	<div style="margin-top:10px; margin-bottom:10px;">
