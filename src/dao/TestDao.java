@@ -11,24 +11,39 @@ import bean.Student;
 import bean.Subject;
 import bean.Test;
 
-//まだ未完成
 public class TestDao extends DAO{
 	private String baseSql="select * from student join school where cd=?";
 
-	//未完成
 	public Test get(Student student,Subject subject,School school,int no) throws Exception{
-		Connection con=getConnection();
-		PreparedStatement st;
+		Test test = new Test();
 
-		st = con.prepareStatement(
-			"select * from subject where school_cd=?"
-		);
-		return pass;
+		test.setSchool(school);
+		test.setNo(no);
+
+		return test;
 	}
 
-	public List<Test> PostFilter(ResultSet rSet,School school)throws Exception{
-		return pass;
+	public List<Student> PostFilter(ResultSet rSet, School school) throws Exception {
+	    String cd = school.getCd();
+	    List<Student> list = new ArrayList<Student>();
+	    while (rSet.next()) {
+	        if (rSet.getString("cd").equals(cd)) {
+	            Student s = new Student();
+	            s.setNo(rSet.getString("no"));
+	            s.setName(rSet.getString("name"));
+	            s.setEntYear(rSet.getInt("ent_year"));
+	            s.setClassNum(rSet.getString("class_num"));
+	            s.setIsAttend(rSet.getBoolean("is_attend"));
+	            School sc = new School();
+	            sc.setCd(rSet.getString("cd"));
+	            sc.setName(rSet.getString("name"));
+	            s.setSchool(sc);
+	            list.add(s); // ✅ Student型のリストに追加
+	        }
+	    }
+	    return list;
 	}
+
 
 	public List<String> filter(int entYear, String classNum, String subject, int num, School school) throws Exception {
 	    // データベース接続
@@ -75,61 +90,6 @@ public class TestDao extends DAO{
 
 	    return list;
 	}
-
-	/*未使用だが一応残してる
-	public List<String> filter1(int entYear, String classNum, String subject, int num, School school) throws Exception {
-	    // データベース接続
-	    Connection con = getConnection();
-	    PreparedStatement st;
-
-	    // SQL文の修正
-	    st = con.prepareStatement(
-	        "SELECT s.ent_year, t.class_num, sub.name, t.no "
-	        + "FROM student AS s "
-	        + "JOIN test AS t ON s.school_cd = t.school_cd "
-	        + "JOIN subject AS sub ON t.school_cd = sub.school_cd "
-	        + "WHERE s.ent_year = ? "
-	        + "AND t.class_num = ? "
-	        + "AND sub.name = ? "
-	        + "AND t.no = ?"
-
-			select s.ent_year,t.class_num,t.student_no,s.name
-			from student as s
-			join test as t
-			on s.no = t.student_no
-	    );
-
-	    // パラメータの設定
-	    st.setInt(1, entYear);
-	    st.setString(2, classNum);
-	    st.setString(3, subject);
-	    st.setInt(4, num);
-
-	    // クエリ実行
-	    ResultSet rs = st.executeQuery();
-
-	    // 結果を格納するリスト
-	    List<String> list = new ArrayList<>();
-
-	    // 結果セットを処理
-	    while (rs.next()) {
-	        // データをリストに追加
-	    	while (rs.next()) {
-	    	    String row = rs.getInt("ent_year") + "," +
-	    	                 rs.getString("class_num") + "," +
-	    	                 rs.getString("name") + "," +
-	    	                 rs.getInt("no");
-	    	    list.add(row);
-	    	}
-	    }
-
-	    // クリーンアップ
-	    st.close();
-	    con.close();
-
-	    return list;
-	}
-	*/
 
 	public boolean save(List<String> list) throws Exception {
 	    // データベース接続
@@ -220,7 +180,15 @@ public class TestDao extends DAO{
 	    return result;
 	}
 
-	public boolean save(Test test,Connection connection) throws Exception{
-		return pass;
+	public boolean save(Test test, Connection connection) throws Exception {
+	    String sql = "INSERT INTO test (student_no, subject, score) VALUES (?, ?, ?)";
+	    try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+	        stmt.setInt(1, test.getNo());
+	        stmt.setString(2, test.getSubject().getName());
+	        stmt.setInt(3, test.getPoint());
+
+	        int rowsAffected = stmt.executeUpdate();
+	        return rowsAffected > 0; // 成功したら true を返す
+	    }
 	}
 }

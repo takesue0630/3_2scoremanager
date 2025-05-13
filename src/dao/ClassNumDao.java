@@ -65,18 +65,17 @@ public class ClassNumDao extends DAO{
 		return result;
 	}
 
-	//まだ未完成
-	public boolean save(ClassNum classNum,String newclassNum)throws Exception{
 
-		Connection con=getConnection();
+	public boolean save(ClassNum classNum, String newclassNum, Connection connection) throws Exception {
+	    String sql = "INSERT INTO class_num (school_cd, class_num) VALUES (?, ?)";
+	    try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+	        // School オブジェクトから学校コードを取得
+	        stmt.setString(1, classNum.getSchool().getCd());
+	        // 引数で渡された新しいクラス番号をセット
+	        stmt.setString(2, newclassNum);
 
-		PreparedStatement st=con.prepareStatement(
-			""
-		);
-
-		st.close();
-		con.close();
-
-		return pass;
+	        int rowsAffected = stmt.executeUpdate();
+	        return rowsAffected > 0;  // 挿入に成功すれば true
+	    }
 	}
 }
