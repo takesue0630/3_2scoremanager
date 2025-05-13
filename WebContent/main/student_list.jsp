@@ -32,7 +32,8 @@
 		</div>
 
 		<div style="text-align:center; width:20%; margin:auto;">
-			<input type="checkbox" name="f3">在学中
+			<input type="checkbox" name="f3">
+			<label>在学中</label>
 		</div>
 
 		<div style="text-align:center; width:20%; margin:auto;">
