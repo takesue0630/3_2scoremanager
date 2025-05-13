@@ -14,13 +14,11 @@ public class SubjectDeleteAction extends Action {
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
 
-//		セッションからユーザーデータを取得
+//		科目の詳細データを取得
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher)session.getAttribute("teacher");
 //
 		String no= request.getParameter("no");
-
-//		セッションのユーザーデータから、ユーザーが所属している学校の科目一覧用データを取得
 
 		SubjectDao dao=new SubjectDao();
 		Subject subject=dao.get(no,teacher.getSchool());

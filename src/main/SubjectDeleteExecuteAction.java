@@ -10,6 +10,11 @@ public class SubjectDeleteExecuteAction extends Action {
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
 
+		String subject_cd = request.getParameter("subject_cd");
+		String cd = request.getParameter("cd");
+		String name = request.getParameter("name");
+
+
 		return "subject_delete.jsp";
 	}
 }
