@@ -70,10 +70,10 @@
 	</form>
 </div>
 
+<div>氏名：${ student.name }(${ student.no })</div>
+
 <c:choose>
 	<c:when test="${ list.size()>0 }">
-		<div>氏名：${ student.name }(${ student.no })</div>
-
 		<table style="width:100%;">
 			<thead>
 				<th style="text-align:left; width:50%;">科目名</th>
