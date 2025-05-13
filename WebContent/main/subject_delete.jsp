@@ -7,7 +7,7 @@
 
 <h2>科目情報削除</h2>
 
-<p>${product.id}を削除してもよろしいですか。</p>
+<p>${subject_cd}:${subject_name}を削除してもよろしいですか。</p>
 <a href=SubjectDeleteExecute.Action><input type="submit" style="color: red;/*文字の色を白*/ background-color: blue; /*背景の色を青*/
     border-radius: 3px 3px 3px 3px;  /* 角を丸くする */" value="削除"></a>
     <br>
