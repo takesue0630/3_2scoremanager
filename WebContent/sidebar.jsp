@@ -18,7 +18,7 @@
 </ul>
 </li>
 
-<li><a href="main/subject_list">科目管理</a><li>
+<li><a href="SubjectList.action">科目管理</a><li>
 </ul>
 
 </nav>
