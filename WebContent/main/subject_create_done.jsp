@@ -13,5 +13,5 @@
 <br>
 
 <a href="subject_create.jsp">戻る</a>
-<a href="subject_list.jsp">科目一覧</a>
+<a href="SubjectList.action">科目一覧</a>
 <%@include file="../footer.jsp" %>

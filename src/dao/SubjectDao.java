@@ -144,6 +144,36 @@ public class SubjectDao extends DAO{
 
 	}
 
+	public boolean save1(Subject subject) throws Exception {
+	    Connection con = getConnection();
+	    PreparedStatement st;
+	    boolean result = false;  // ← 実行成功したかどうかを反映
+
+	    st = con.prepareStatement(
+	        "INSERT INTO subject (SCHOOL_CD, CD, NAME) VALUES (?, ?, ?)"
+	    );
+
+	    st.setString(1, subject.getSchool().getCd());
+	    st.setString(2, subject.getCd());
+	    st.setString(3, subject.getName());
+
+	    System.out.println("Daoの開始");
+	    System.out.println("学校コード: " + subject.getSchool().getCd());
+	    System.out.println("科目コード: " + subject.getCd());
+	    System.out.println("科目名: " + subject.getName());
+
+	    int count = st.executeUpdate();  // ← SQL実行
+
+	    if (count > 0) {
+	        result = true;  // 1行以上追加されたら成功
+	    }
+
+	    st.close();
+	    con.close();
+
+	    return result;
+	}
+
 
     public boolean delete(Subject subject) throws Exception {
 		Connection con=getConnection();
