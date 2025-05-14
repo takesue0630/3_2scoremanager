@@ -10,11 +10,12 @@
 	}
 
 	.box {
-		width: 150px;
-		height: 100px;
+		width: 280px;
+		height: 200px;
 		border-radius: 15px;
 		text-align: center;
-		line-height: 100px;
+		align-items: center;
+		font-size: 20px;
 	}
     .logout-container {
         text-align: right;
@@ -24,7 +25,7 @@
 
 </style>
 
-<h2 style="background-color:grey;">メニュー</h2>
+<h2 style="background-color:#d3d3d3;">メニュー</h2>
 
 <div class="manu-container">
 
