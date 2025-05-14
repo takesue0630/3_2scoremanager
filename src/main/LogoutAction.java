@@ -20,7 +20,7 @@ public class LogoutAction extends Action {
         }
 
         // ログアウト完了画面へリダイレクト
-        response.sendRedirect(request.getContextPath() + "/logout_done.jsp");
+        response.sendRedirect(request.getContextPath() + "/logout.jsp");
 		return null;
 
         // または、ログイン画面へリダイレクトする場合
