@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
 
-public class SubjectCreateAction extends Action {
+public class SubjectCreateExecuteAction extends Action {
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {

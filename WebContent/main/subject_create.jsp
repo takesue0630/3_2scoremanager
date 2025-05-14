@@ -6,7 +6,7 @@
 </div>
 
 
-<form action="subject_create_done.jsp" method="get">
+<form action="SubjectCreateExecute.action" method="get">
 <label>科目コード</label>
 <br>
 <input type="text" name="cd" value="${cd}"  maxlength="3"  placeholder="科目コードを入力してください" required>
