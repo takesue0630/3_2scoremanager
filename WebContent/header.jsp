@@ -1,5 +1,6 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,18 +50,16 @@
 </style>
 </head>
 <body>
-<div id = "wrapper">
-<div id = "header">
+<header>
 <h1>得点管理システム</h1>
 <div class="sub-menu">
 
 
-        <span>${ teacher.name }</span>
-<c:if test="${teacher != null && teacher.authenticated}">
-<a href="../logout.jsp">ログアウト</a>
-</c:if>
+       <span>${ teacher.name }</span>
+	<c:if test="${teacher != null}">
+	<a href="Logout.action">ログアウト</a>
+	</c:if>
 
-
-
-    </div>
+</div>
+</header>
 <div id = "container">
