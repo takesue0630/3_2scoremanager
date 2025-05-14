@@ -103,8 +103,8 @@ public class TestRegistExecuteAction extends Action {
             }
 
             for (String studentNo : deleteList) {
-                testdao.delete(studentNo);  // ← 修正ポイント
-            }
+                testdao.delete(studentNo);
+                }
         }
 
         return "test_regist_done.jsp";
