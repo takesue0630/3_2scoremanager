@@ -16,12 +16,12 @@ public class SubjectCreateExecuteAction extends Action {
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
 		//入力された値の受け取り
-		String cd = request.getParameter("cd1");
+		String cd = request.getParameter("cd");
 	    System.out.println(cd);
 		Subject subjectbean = new Subject(); // Subject オブジェクトを生成
 		subjectbean.setCd(cd);
 
-		String name = request.getParameter("name1");
+		String name = request.getParameter("name");
 	    System.out.println(name);
 		subjectbean.setName(name);
 
