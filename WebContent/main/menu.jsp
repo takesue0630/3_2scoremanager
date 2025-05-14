@@ -2,7 +2,6 @@
 <%@include file="../header.jsp" %>
 <%@include file="../sidebar.jsp" %>
 
-
 <style>
 	.manu-container {
 		display: flex;
