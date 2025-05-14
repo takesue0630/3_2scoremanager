@@ -24,7 +24,6 @@
     }
 
 </style>
-
 <h2 style="background-color:#d3d3d3;">メニュー</h2>
 
 <div class="manu-container">
