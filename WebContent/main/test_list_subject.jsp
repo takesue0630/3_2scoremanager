@@ -91,11 +91,10 @@
 					<td>${ testlistsubject.classNum }</td>
 					<td>${ testlistsubject.studentNo }</td>
 					<td>${ testlistsubject.studentName }</td>
-					<td>${ testlistsubject.points[1] }</td>
 					<td>
 						<c:choose>
-							<c:when test="${ testlistsubject.points[1] }!=null">
-								${ testlistsubject.points[1] }
+							<c:when test="${ testlistsubject.points[\"1\"]!=null }">
+								${ testlistsubject.points["1"] }
 							</c:when>
 							<c:otherwise>
 								-
@@ -104,8 +103,8 @@
 					</td>
 					<td>
 						<c:choose>
-							<c:when test="${ testlistsubject.points[2] }!=null">
-								${ testlistsubject.points[2] }
+							<c:when test="${ testlistsubject.points[\"2\"]!=null }">
+								${ testlistsubject.points["2"] }
 							</c:when>
 							<c:otherwise>
 								-
