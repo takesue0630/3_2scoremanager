@@ -55,9 +55,9 @@
 
         <h2>ログイン</h2>
 
-        <%-- エラーメッセージを表示する場所 --%>
+       <%-- エラーメッセージの表示 --%>
         <c:if test="${not empty errorMessage}">
-            <p class="error-message">${errorMessage}</p>
+            <p style="color: red;">${errorMessage}</p>
         </c:if>
 
         <input type="text" name="id" placeholder="半角でご入力ください" required>
