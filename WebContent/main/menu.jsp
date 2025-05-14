@@ -39,7 +39,7 @@
 	</div>
 
 	<div class="box" style="background-color:#d8bfd8 ;">
-	<a href="subject_list">科目管理</a>
+	<a href="SubjectList.action">科目管理</a>
 	</div>
 </div>
 <%@include file="../footer.jsp" %>
