@@ -5,7 +5,6 @@
 
 <h2 style="background-color: #DCDCDC; padding:10px;">成績参照</h2>
 
-
 <div style="border:2px solid #DCDCDC; border-radius:5px; margin:10px;">
 	<form action="TestListSubjectExecute.action" method="get" style="display:flex;">
 		<div style="text-align:center; width:15%; padding:10px;">
@@ -70,7 +69,6 @@
 		</div>
 	</form>
 </div>
-
 
 <p style="color:#00bfff;">科目情報を選択または学生情報を入力して検索ボタンをクリックしてください</p>
 
