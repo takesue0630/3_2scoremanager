@@ -11,6 +11,11 @@
         text-align: center;
     }
 
+    .error-message { /* エラーメッセージのスタイル */
+        color: red;
+        margin-bottom: 10px;
+    }
+
     h2 {
         margin-bottom: 20px;
     }
@@ -46,14 +51,19 @@
 </style>
 
 <div class="login-container">
-   <form action="<%= request.getContextPath() %>/Login.action" method="post">
+    <form action="<%= request.getContextPath() %>/Login.action" method="post">
 
         <h2>ログイン</h2>
+
+        <%-- エラーメッセージを表示する場所 --%>
+        <c:if test="${not empty errorMessage}">
+            <p class="error-message">${errorMessage}</p>
+        </c:if>
 
         <input type="text" name="id" placeholder="半角でご入力ください" required>
 
         <input type="password" name="password" placeholder="30文字以内の半角英数字でご入力ください" required>
-     <label><input type="checkbox" id="showPassword">パスワードを表示</label>
+        <label><input type="checkbox" id="showPassword">パスワードを表示</label>
 
         <input type="submit" value="ログイン">
 
