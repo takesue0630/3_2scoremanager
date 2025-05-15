@@ -19,13 +19,13 @@ public class SubjectDeleteAction extends Action {
 		Teacher teacher=(Teacher)session.getAttribute("teacher");
 //
 		String no= request.getParameter("no");
+		System.out.println(no);
 
 		SubjectDao dao=new SubjectDao();
 		Subject subject=dao.get(no,teacher.getSchool());
 
-		Subject p=new Subject();
-		p.setCd(no);
-		p.setSchool(teacher.getSchool());
+		request.setAttribute("subject_name",subject.getName());
+		request.setAttribute("subject_cd",subject.getCd());
 
 
 		return "subject_delete.jsp";
