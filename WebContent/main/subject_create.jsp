@@ -24,6 +24,6 @@
 </button>
 </form>
 
-<a href="subject_list.jsp">戻る</a>
+<a href="SubjectList.action">戻る</a>
 
 <%@include file="../footer.jsp" %>

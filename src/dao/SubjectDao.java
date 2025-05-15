@@ -126,7 +126,7 @@ public class SubjectDao extends DAO{
 
 
 
-	public boolean save(Subject subject) throws Exception {
+	/*public boolean save(Subject subject) throws Exception {
 		Connection con=getConnection();
 		PreparedStatement st;
 		boolean result = true;
@@ -141,10 +141,9 @@ public class SubjectDao extends DAO{
 	    st.setString(4, subject.getSchool().getCd());
 
 	    return result;
+	}*/
 
-	}
-
-	public boolean save1(Subject subject) throws Exception {
+	public boolean save(Subject subject) throws Exception {
 	    Connection con = getConnection();
 	    PreparedStatement st;
 	    boolean result = false;  // ← 実行成功したかどうかを反映
