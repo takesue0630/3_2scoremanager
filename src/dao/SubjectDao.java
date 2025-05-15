@@ -33,7 +33,7 @@ public class SubjectDao extends DAO{
 		return s;
 	}
 
-	//まだ未完成
+	/*
 	public List<Subject> filter1(School school)throws Exception{
 		Connection con=getConnection();
 		PreparedStatement st;
@@ -59,7 +59,7 @@ public class SubjectDao extends DAO{
 		con.close();
 
 		return list;
-	}
+	}*/
 
 	public List<Subject> filter(School school) throws Exception {
 	    List<Subject> list = new ArrayList<>();
