@@ -13,10 +13,15 @@
 		width: 280px;
 		height: 200px;
 		border-radius: 15px;
-		text-align: center;
-		align-items: center;
 		font-size: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;  /* 縦中央 */
+		align-items: center;      /* 横中央 */
+		text-align: center;
+		text-decoration: none;
 	}
+
     .logout-container {
         text-align: right;
         margin-top: 10px;
@@ -33,10 +38,10 @@
 	</div>
 
 	<div class="box" style="background-color:#90ee90 ;">
-	    成績管理<br>
-	    <a href="TestRegist.action">成績登録</a><br>
-	    <a href="test_list">成績参照</a><br>
-	</div>
+    <div>成績管理</div>
+      <a href="TestRegist.action">成績登録</a>
+      <a href="TestList.action">成績参照</a>
+    </div>
 
 	<div class="box" style="background-color:#d8bfd8 ;">
 	<a href="SubjectList.action">科目管理</a>
