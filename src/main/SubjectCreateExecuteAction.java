@@ -47,7 +47,7 @@ public class SubjectCreateExecuteAction extends Action {
 
 		        // 入力値の再表示のためにリクエストに設定
 		        request.setAttribute("cd", cd);
-	         request.setAttribute("name", name);
+		        request.setAttribute("name", name);
 
 	         return "subject_create.jsp";
 		    }

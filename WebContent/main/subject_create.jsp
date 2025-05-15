@@ -9,7 +9,7 @@
 
 <form action="SubjectCreateExecute.action" method="get">
 <label>科目コード</label><br>
-<input type="text" name="cd" value="${cd}" maxlength="3" placeholder="科目コードを入力してください" required>
+<input type="text" name="cd" value="${cd}" maxlength="3" placeholder="科目コードを入力してください" required><br>
 <!-- エラーメッセージ -->
 <c:if test="${not empty error}">
     <p style="color:#FFCC66;">${error}</p>
