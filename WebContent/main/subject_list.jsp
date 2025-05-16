@@ -3,7 +3,7 @@
 <%@include file="../header.jsp" %>
 <%@include file="../sidebar.jsp" %>
 
-<h2 style="background-color: #DCDCDC;">科目管理</h2>
+<h2 style="background-color: #DCDCDC; padding:10px;">科目管理</h2>
 
 <p style="text-align: right;"><a href="SubjectCreate.action">新規登録</a></p>
 
@@ -14,7 +14,7 @@
 		<th style="width:15%;"></th>
 		<th style="width:15%;"></th>
 	</thead>
-	
+
 	<tbody>
 	<c:forEach var="subject" items="${list}">
 		<tr>
