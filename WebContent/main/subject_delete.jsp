@@ -10,7 +10,7 @@
 <p>「${subject_name}(${subject_cd})」を削除してもよろしいですか</p>
 <form action=SubjectDeleteExecute.action method="get">
 <input type="submit" style="color: red;/*文字の色を白*/ background-color: blue; /*背景の色を青*/
-    border-radius: 3px 3px 3px 3px;  /* 角を丸くする */" value="削除">
+    border-radius: 3px 3px 3px 3px;  /*角を丸くする*/" value="削除">
 
 <input type="hidden" name="subject_cd" value="${subject_cd}">
 <input type="hidden" name="subject_name" value="${subject_name}">
