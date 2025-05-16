@@ -65,20 +65,20 @@ public class StudentListAction extends Action {
 
 //			カレンダーオブジェクトの生成
 			Calendar c = Calendar.getInstance();
-	//		現在年を格納
+//			現在年を格納
 		    c.setTime(new Date());
-	//	    十年前から十年後までのリストを作成
+//		    十年前から十年後までのリストを作成
 		    List<String> ent_year_set=new ArrayList<>();
 		    for (int i = -10; i <= 10; i++) {
 		    	ent_year_set.add(""+(c.get(Calendar.YEAR)+i)+"");
 		    }
-	//	    リクエスト属性に格納
+//		    リクエスト属性に格納
 		    request.setAttribute("ent_year_set", ent_year_set);
 
-	//	    セレクトボックス用のクラスデータを取得
+//		    セレクトボックス用のクラスデータを取得
 			ClassNumDao cdao=new ClassNumDao();
 			List<String> class_num_set=cdao.filter(teacher.getSchool());
-	//	    リクエスト属性に格納
+//		    リクエスト属性に格納
 			request.setAttribute("class_num_set", class_num_set);
 
 			return "student_list.jsp";

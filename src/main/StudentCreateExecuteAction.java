@@ -24,8 +24,7 @@ public class StudentCreateExecuteAction extends Action {
 			HttpSession session=request.getSession();
 			Teacher teacher=(Teacher)session.getAttribute("teacher");
 
-//			入力値のチェック
-
+//			入学年度用リストの作成
 			Calendar c = Calendar.getInstance();
 		    c.setTime(new Date());
 		    List<String> ent_year=new ArrayList<>();
@@ -79,11 +78,7 @@ public class StudentCreateExecuteAction extends Action {
 			student.setSchool(teacher.getSchool());
 
 //			入力された値をDBに保存
-			try {
-				dao.save(student);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			dao.save(student);
 
 //			表示する
 			return "student_create_done.jsp";

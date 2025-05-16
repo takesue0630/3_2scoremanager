@@ -24,10 +24,12 @@ public class StudentUpdateAction extends Action {
 			StudentDao s=new StudentDao();
 			Student student=s.get(request.getParameter("no"));
 
+//			ユーザーデータの情報からクラス番号のリストを取得
 			Teacher teacher=(Teacher)session.getAttribute("teacher");
 			ClassNumDao dao=new ClassNumDao();
 			List<String> class_num=dao.filter(teacher.getSchool());
 
+//			リクエスト属性へのセット
 			request.setAttribute("ent_year", student.getEntYear());
 			request.setAttribute("no", student.getNo());
 			request.setAttribute("name", student.getName());
