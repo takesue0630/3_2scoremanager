@@ -177,17 +177,23 @@ public class SubjectDao extends DAO{
     public boolean delete(Subject subject) throws Exception {
 		Connection con=getConnection();
 		PreparedStatement st;
-		boolean result = true;
+		boolean result = false;
 
 		st=con.prepareStatement(
 				"DELETE FROM subject WHERE CD = ? and NAME = ?"
 			);
-	        st.setString(1, subject.getCd());
-	        st.setString(2, subject.getName());
+        st.setString(1, subject.getCd());
+        st.setString(2, subject.getName());
 
-			st.close();
-			con.close();
+        int count = st.executeUpdate();  // ← SQL実行
 
-	        return result;
+	    if (count > 0) {
+	        result = true;  // 1行以上追加されたら成功
+	    }
+
+		st.close();
+		con.close();
+
+        return result;
 	 }
 }
