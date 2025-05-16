@@ -87,11 +87,11 @@
 			<tbody>
 			<c:forEach var="testlistsubject" items="${list}">
 				<tr>
-					<td>${ testlistsubject.entYear }</td>
-					<td>${ testlistsubject.classNum }</td>
-					<td>${ testlistsubject.studentNo }</td>
-					<td>${ testlistsubject.studentName }</td>
-					<td>
+					<td style="border-top:2px solid #DCDCDC; padding:5px;">${ testlistsubject.entYear }</td>
+					<td style="border-top:2px solid #DCDCDC; padding:5px;">${ testlistsubject.classNum }</td>
+					<td style="border-top:2px solid #DCDCDC; padding:5px;">${ testlistsubject.studentNo }</td>
+					<td style="border-top:2px solid #DCDCDC; padding:5px;">${ testlistsubject.studentName }</td>
+					<td style="border-top:2px solid #DCDCDC; padding:5px;">
 						<c:choose>
 							<c:when test="${ testlistsubject.points[\"1\"]!=null }">
 								${ testlistsubject.points["1"] }
@@ -101,7 +101,7 @@
 							</c:otherwise>
 						</c:choose>
 					</td>
-					<td>
+					<td style="border-top:2px solid #DCDCDC; padding:5px;">
 						<c:choose>
 							<c:when test="${ testlistsubject.points[\"2\"]!=null }">
 								${ testlistsubject.points["2"] }

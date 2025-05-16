@@ -85,10 +85,10 @@
 			<tbody>
 				<c:forEach var="testliststudent" items="${list}">
 					<tr>
-						<td>${ testliststudent.subjectName }</td>
-						<td>${ testliststudent.subjectCd }</td>
-						<td>${ testliststudent.num }</td>
-						<td>${ testliststudent.point }</td>
+						<td style="border-top:2px solid #DCDCDC; padding:5px;">${ testliststudent.subjectName }</td>
+						<td style="border-top:2px solid #DCDCDC; padding:5px;">${ testliststudent.subjectCd }</td>
+						<td style="border-top:2px solid #DCDCDC; padding:5px;">${ testliststudent.num }</td>
+						<td style="border-top:2px solid #DCDCDC; padding:5px;">${ testliststudent.point }</td>
 					<tr>
 				</c:forEach>
 			</tbody>

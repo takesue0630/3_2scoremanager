@@ -58,17 +58,17 @@
 			<tbody>
 			<c:forEach var="student" items="${list}">
 				<tr>
-					<td>${ student.entYear }</td>
-					<td>${ student.no }</td>
-					<td>${ student.name }</td>
-					<td style="text-align:center;">${ student.classNum }</td>
-					<td style="text-align:center;">
+					<td style="border-top:2px solid #DCDCDC; padding:5px;">${ student.entYear }</td>
+					<td style="border-top:2px solid #DCDCDC; padding:5px;">${ student.no }</td>
+					<td style="border-top:2px solid #DCDCDC; padding:5px;">${ student.name }</td>
+					<td style="border-top:2px solid #DCDCDC; padding:5px; text-align:center;">${ student.classNum }</td>
+					<td style="border-top:2px solid #DCDCDC; padding:5px; text-align:center;">
 						<c:choose>
 							<c:when test="${ student.isAttend }">〇</c:when>
 							<c:otherwise>×</c:otherwise>
 						</c:choose>
 					</td>
-					<td style="text-align:center;"><a href="StudentUpdate.action?no=${ student.no }&&">変更</a></td>
+					<td style="border-top:2px solid #DCDCDC; padding:5px; text-align:center;"><a href="StudentUpdate.action?no=${ student.no }&&">変更</a></td>
 				<tr>
 			</c:forEach>
 			</tbody>

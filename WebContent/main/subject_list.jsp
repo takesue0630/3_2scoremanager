@@ -18,10 +18,10 @@
 	<tbody>
 	<c:forEach var="subject" items="${list}">
 		<tr>
-			<td>${ subject.cd }</td>
-			<td>${ subject.name }</td>
-			<td style="text-align:center;"><a href="SubjectUpdate.action?no=${ subject.cd }&&">変更</a></td>
-			<td style="text-align:center;"><a href="SubjectDelete.action?no=${ subject.cd }&&">削除</a></td>
+			<td style="border-top:2px solid #DCDCDC; padding:5px;">${ subject.cd }</td>
+			<td style="border-top:2px solid #DCDCDC; padding:5px;">${ subject.name }</td>
+			<td style="border-top:2px solid #DCDCDC; padding:5px; text-align:center;"><a href="SubjectUpdate.action?no=${ subject.cd }&&">変更</a></td>
+			<td style="border-top:2px solid #DCDCDC; padding:5px; text-align:center;"><a href="SubjectDelete.action?no=${ subject.cd }&&">削除</a></td>
 		<tr>
 	</c:forEach>
 	</tbody>
