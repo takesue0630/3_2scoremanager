@@ -148,13 +148,25 @@ public class SubjectDao extends DAO{
 	    PreparedStatement st;
 	    boolean result = false;  // ← 実行成功したかどうかを反映
 
-	    st = con.prepareStatement(
-	        "INSERT INTO subject (SCHOOL_CD, CD, NAME) VALUES (?, ?, ?)"
-	    );
+	    if (get(subject.getCd(),subject.getSchool()).getCd()==null) {
 
-	    st.setString(1, subject.getSchool().getCd());
-	    st.setString(2, subject.getCd());
-	    st.setString(3, subject.getName());
+			st=con.prepareStatement(
+				"insert into suject values (?,?,?)"
+			);
+			st.setString(1, subject.getSchool().getCd());
+		    st.setString(2, subject.getCd());
+		    st.setString(3, subject.getName());
+
+		} else {
+
+			st=con.prepareStatement(
+				"update subject set name=? where school_cd=? and cd=?"
+			);
+			st.setString(1, subject.getName());
+			st.setString(2, subject.getSchool().getCd());
+			st.setString(3, subject.getCd());
+
+		}
 
 	    System.out.println("Daoの開始");
 	    System.out.println("学校コード: " + subject.getSchool().getCd());
