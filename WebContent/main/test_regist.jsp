@@ -255,7 +255,7 @@
   <input type="hidden" name="f2" value="<%= selectedF2 %>" />
   <input type="hidden" name="f3" value="<%= selectedF3 %>" />
   <input type="hidden" name="f4" value="<%= selectedF4 %>" />
-  <button type="submit" class="search-button">登録して終了</button>
+  <input type="submit" value="登録して終了" class="search-button">
 <% } else { %>
   <p class="error-message">検索条件を選択してください。</p>
 <% } %>
