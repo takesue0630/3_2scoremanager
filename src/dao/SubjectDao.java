@@ -151,7 +151,7 @@ public class SubjectDao extends DAO{
 	    if (get(subject.getCd(),subject.getSchool()).getCd()==null) {
 
 			st=con.prepareStatement(
-				"insert into suject values (?,?,?)"
+				"insert into subject values (?,?,?)"
 			);
 			st.setString(1, subject.getSchool().getCd());
 		    st.setString(2, subject.getCd());
