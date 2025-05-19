@@ -11,6 +11,8 @@
 		<input class="boader_none" type="text" name="cd" value="${ cd }" readonly style="border:none; outline:none; width:100%; padding:10px; margin-top:10px; margin-bottom:10px;">
 	</div>
 
+	<div style="color:#ffd700;">${ error }</div>
+
 	<div style="margin-top:10px; margin-bottom:10px;">
 		<label>科目名</label>
 		<input type="text" name="name" maxlength="30" value="${ name }" placeholder="氏名を入力してください" required  style="width:100%; padding:10px; margin-top:10px; margin-bottom:10px;">

@@ -23,6 +23,9 @@ public class SubjectUpdateExecuteAction extends Action {
 			SubjectDao subject_dao=new SubjectDao();
 			Subject subject=subject_dao.get(cd, teacher.getSchool());
 			if (subject.getCd()==null){
+				request.setAttribute("error", "科目が存在していません。");
+				request.setAttribute("cd", cd);
+				request.setAttribute("name", request.getParameter("name"));
 				return "subject_update.jsp";
 			}
 
