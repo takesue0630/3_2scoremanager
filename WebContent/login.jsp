@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <%@include file="header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <style>
     .login-container {
@@ -30,7 +31,6 @@
         box-sizing: border-box;
     }
 
-
     input[type="checkbox"] {
         margin-right: 5px;
     }
@@ -55,15 +55,17 @@
 
         <h2>ログイン</h2>
 
-       <%-- エラーメッセージの表示 --%>
+        <%-- エラーメッセージの表示 --%>
         <c:if test="${not empty errorMessage}">
-            <p style="color: red;">${errorMessage}</p>
+            <p class="error-message">${errorMessage}</p>
         </c:if>
 
-        <input type="text" name="id" placeholder="半角でご入力ください" required>
+        <input type="text" name="id" placeholder="半角でご入力ください" value="${param.id}" required>
 
         <input type="password" name="password" placeholder="30文字以内の半角英数字でご入力ください" required>
-        <label><input type="checkbox" id="showPassword">パスワードを表示</label>
+        <label>
+            <input type="checkbox" id="showPassword">パスワードを表示
+        </label>
 
         <input type="submit" value="ログイン">
 
@@ -71,16 +73,12 @@
 </div>
 
 <script>
-const passwordInput = document.querySelector('input[name="password"]');
-const showPasswordCheckbox = document.getElementById('showPassword');
+    const passwordInput = document.querySelector('input[name="password"]');
+    const showPasswordCheckbox = document.getElementById('showPassword');
 
-showPasswordCheckbox.addEventListener('change', function() {
-    if (this.checked) {
-        passwordInput.type = 'text';
-    } else {
-        passwordInput.type = 'password';
-    }
-});
+    showPasswordCheckbox.addEventListener('change', function() {
+        passwordInput.type = this.checked ? 'text' : 'password';
+    });
 </script>
 
 <%@include file="footer.jsp" %>

@@ -165,7 +165,6 @@
 					</c:forEach>
 				</tbody>
 			</table>
-
 			<button type="submit" class="search-button">登録して終了</button>
 	    </form>
     </c:if>
