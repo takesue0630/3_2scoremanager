@@ -7,6 +7,10 @@
 
 <p style="text-align: right;"><a href="StudentCreate.action">新規登録</a></p>
 
+<c:if test="${ not empty errorMsg }">
+	<div style="color:red; padding:10px;">${ errorMsg }</div>
+</c:if>
+
 <form action="StudentList.action" method="get">
 	<div style="border:2px solid #DCDCDC; border-radius:5px; margin:10px; display:flex;">
 		<div style="width:30%; padding:10px;">
