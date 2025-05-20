@@ -20,7 +20,7 @@ public class Test{
 		return classNum;
 	}
 
-	public void setId(String classNum) {
+	public void setClassNum(String classNum) {
 		this.classNum = classNum;
 	}
 
