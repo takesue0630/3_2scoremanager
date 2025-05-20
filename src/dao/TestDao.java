@@ -45,45 +45,40 @@ public class TestDao extends DAO{
 	}
 
 
-	public List<String> filter(int entYear, String classNum, String subject, int num, School school) throws Exception {
+	public List<Test> filter(int entYear, String classNum, String subject, int num, School school) throws Exception {
 	    // データベース接続
 	    Connection con = getConnection();
 	    PreparedStatement st;
 
 	    // SQL文の修正
 	    st = con.prepareStatement(
-	    	    "SELECT s.ent_year, t.class_num, t.student_no, s.name " +
-	    	    "FROM student AS s " +
-	    	    "JOIN test AS t ON s.no = t.student_no " +
-	    	    "JOIN subject AS sub ON t.school_cd = sub.school_cd " +
-	    	    "WHERE s.ent_year = ? " +
-	    	    "AND t.class_num = ? " +
-	    	    "AND sub.name = ? " +
-	    	    "AND t.no = ?"
-	    	);
+	    	"select * from test join student on test.student_no=student.no where ent_year=? and test.class_num=? and subject_cd=? and test.no=? and test.school_cd=?"
+	    );
 	    // パラメータの設定
 	    st.setInt(1, entYear);
 	    st.setString(2, classNum);
 	    st.setString(3, subject);
 	    st.setInt(4, num);
+	    st.setString(5, school.getCd());
 
 	    // クエリ実行
 	    ResultSet rs = st.executeQuery();
 
 	    // 結果を格納するリスト
-	    List<String> list = new ArrayList<>();
+	    List<Test> list = new ArrayList<>();
 
 	    // 結果セットを処理
 	    while (rs.next()) {
-	        // データをリストに追加
-	    	while (rs.next()) {
-	    	    String row = rs.getInt("ent_year") + "," +
-	    	                 rs.getString("class_num") + "," +
-	    	                 rs.getString("student_no") + "," +
-	    	                 rs.getString("name");
-	    	    list.add(row);
-	    	}
-	    }
+			Test test=new Test();
+			Student student=new Student();
+			student.setNo(rs.getString("student.no"));
+			student.setName(rs.getString("student.name"));
+			student.setEntYear(rs.getInt("ent_year"));
+			test.setStudent(student);
+			test.setC
+			list.add(test);
+		}
+
 	    // クリーンアップ
 	    st.close();
 	    con.close();
