@@ -8,7 +8,7 @@ public class Test{
 	private int no;
 	private int point;
 
-	public Student Student() {
+	public Student getStudent() {
 		return student;
 	}
 
