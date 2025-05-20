@@ -75,7 +75,11 @@ public class TestDao extends DAO{
 			student.setName(rs.getString("student.name"));
 			student.setEntYear(rs.getInt("ent_year"));
 			test.setStudent(student);
-			test.setC
+			test.setClassNum(rs.getString("test.class_num"));
+//			test.setSubject();
+//			test.setSchool(school);
+			test.setNo(rs.getInt("test.no"));
+			test.setPoint(rs.getInt("point"));
 			list.add(test);
 		}
 
