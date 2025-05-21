@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import bean.Subject;
 import bean.Teacher;
+import bean.Test;
 import dao.ClassNumDao;
 import dao.SubjectDao;
 import dao.TestDao;
@@ -132,10 +133,10 @@ public class TestRegistAction extends Action{
 		    request.setAttribute("ent_year_set", ent_year_set);
 
 		 // 入力保持用（再表示のため）
-            request.setAttribute("selectedF1", ent_year);
-            request.setAttribute("selectedF2", class_num);
-            request.setAttribute("selectedF3", subject_cd);
-            request.setAttribute("selectedF4", subject_num);
+            request.setAttribute("ent_year", ent_year);
+            request.setAttribute("class_num", class_num);
+            request.setAttribute("subject_cd", subject_cd);
+            request.setAttribute("subject_num", subject_num);
 
             if (ent_year==null) {
 //              初めてこの画面に来た
@@ -154,12 +155,11 @@ public class TestRegistAction extends Action{
 //            	検索成功
 
             	TestDao test_dao=new TestDao();
-            	List<String> test_list=test_dao.filter(Integer.parseInt(ent_year), class_num, subject_cd, Integer.parseInt(subject_num), teacher.getSchool());
+            	List<Test> test_list=test_dao.filter(Integer.parseInt(ent_year), class_num, subject_cd, Integer.parseInt(subject_num), teacher.getSchool());
             	request.setAttribute("test_list", test_list);
-            	System.out.println("テストリスト"+test_list);
 
-            	String subject_name=subject_dao.get(subject_cd, teacher.getSchool()).getName();
-            	request.setAttribute("subject_name", subject_name);
+            	Subject subject=subject_dao.get(subject_cd, teacher.getSchool());
+            	request.setAttribute("subject", subject);
 
             	request.setAttribute("serch", true);
 
@@ -168,6 +168,7 @@ public class TestRegistAction extends Action{
             return "test_regist.jsp";
 
 		} catch(Exception e) {
+			e.printStackTrace();
 			return "../error.jsp";
 		}
 	}

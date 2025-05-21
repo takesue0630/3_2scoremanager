@@ -96,7 +96,7 @@
           <select name="f1" id="f1">
             <option value="">--------</option>
             <c:forEach var="year" items="${ ent_year_set }">
-				<option value="${ year }">${ year }</option>
+				<option value="${ year }" <c:if test="${ ent_year==year }">selected</c:if>>${ year }</option>
 			</c:forEach>
           </select>
         </div>
@@ -106,7 +106,7 @@
           <select name="f2" id="f2">
             <option value="">--------</option>
             <c:forEach var="num" items="${ class_num_set }">
-				<option value="${ num }">${ num }</option>
+				<option value="${ num }" <c:if test="${ class_num==num }">selected</c:if>>${ num }</option>
 			</c:forEach>
           </select>
         </div>
@@ -116,7 +116,7 @@
           <select name="f3" id="f3">
             <option value="">--------</option>
             <c:forEach var="subject" items="${ subject_set }">
-				<option value="${ subject.cd }">${ subject.name }</option>
+				<option value="${ subject.cd }" <c:if test="${ subject_cd==subject.cd }">selected</c:if>>${ subject.name }</option>
 			</c:forEach>
           </select>
         </div>
@@ -125,8 +125,8 @@
           <label for="f4">回数</label>
           <select name="f4" id="f4">
             <option value="">--------</option>
-            <option value="1" <%= "1".equals(selectedF4) ? "selected" : "" %>>1回</option>
-            <option value="2" <%= "2".equals(selectedF4) ? "selected" : "" %>>2回</option>
+            <option value="1" <c:if test="${ subject_num==1 }">selected</c:if>>1回</option>
+            <option value="2" <c:if test="${ subject_num==2 }">selected</c:if>>2回</option>
           </select>
         </div>
 
@@ -140,7 +140,13 @@
     <!-- 検索結果 -->
     <c:if test="${ serch }">
 	    <form action="TestRegistExecute.action" method="GET" style="margin-top: 20px; text-align: left;">
-			<div>科目：${ subject_name }（${ selectedF4 }回）</div>
+	    	<input type="hidden" name="size" value="${ size }">
+	    	<input type="hidden" name="ent_year" value="${ ent_year }">
+	    	<input type="hidden" name="class_num" value="${ class_num }">
+	    	<input type="hidden" name="subject_cd" value="${ subject_cd }">
+	    	<input type="hidden" name="subject_num" value="${ subject_num }">
+
+			<div>科目：${ subject.name }（${ subject_num }回）</div>
 
 			<table>
 				<thead>
@@ -153,14 +159,16 @@
 					</tr>
 				</thead>
 				<tbody>
-				${ test_list }
 					<c:forEach var="test" items="${test_list}">
 						<tr>
 							<td>${ test.student.entYear }</td>
 							<td>${ test.classNum }</td>
 							<td>${ test.student.no }</td>
 							<td>${ test.student.name }</td>
-							<td>${ test.point }</td>
+							<td>
+								<input type="text" name="${ test.student.no }_${ subject.cd }_${ subject_num }" maxlength="10" value="${ test.point }" placeholder="削除">
+								<div style="color:#ffd700;"><c:if test="${ test.point<0 || test.point>100 }">0～100の範囲で入力してください</c:if></div>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
