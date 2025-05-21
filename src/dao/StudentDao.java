@@ -39,6 +39,8 @@ public class StudentDao extends DAO{
 		st.close();
 		con.close();
 
+		System.out.println(s);
+
 		return s;
 	}
 
