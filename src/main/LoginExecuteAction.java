@@ -52,7 +52,7 @@ public class LoginExecuteAction extends Action {
             response.sendRedirect("main/menu.jsp");
             return null; // リダイレクトしたのでここで処理を終える
         } else {
-            request.setAttribute("errorMessage", "IDまたはパスワードが正しくありません。");
+            request.setAttribute("errorMessage", "IDまたはパスワードが間違えています。");
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return null; // forward した時点で処理を終える
         }
