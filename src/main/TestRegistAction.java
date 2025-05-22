@@ -17,6 +17,7 @@ import dao.SubjectDao;
 import dao.TestDao;
 import tool.Action;
 
+//以前のコード
 //public class TestRegistAction extends Action {
 //    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 //        HttpSession session = request.getSession();
@@ -157,6 +158,9 @@ public class TestRegistAction extends Action{
             	TestDao test_dao=new TestDao();
             	List<Test> test_list=test_dao.filter(Integer.parseInt(ent_year), class_num, subject_cd, Integer.parseInt(subject_num), teacher.getSchool());
             	request.setAttribute("test_list", test_list);
+            	for (Test t:test_list) {
+            		System.out.println(t.getStudent().getName());
+            	}
 
             	Subject subject=subject_dao.get(subject_cd, teacher.getSchool());
             	request.setAttribute("subject", subject);
